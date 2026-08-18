@@ -1,0 +1,521 @@
+Date,City,Category,Product,Units Sold,Revenue
+2026-02-01,Jakarta,Coffee,Cafe Latte,22,79.16
+2026-02-01,Bandung,Pastry,Butter Croissant,20,56.87
+2026-02-01,Denpasar,Coffee,Cafe Latte,12,45.64
+2026-02-01,Bandung,Tea,Matcha Latte,12,48.13
+2026-02-02,Yogyakarta,Tea,Jasmine Tea,12,24.93
+2026-02-02,Jakarta,Pastry,Butter Croissant,21,63.4
+2026-02-03,Denpasar,Coffee,Cafe Latte,23,90.09
+2026-02-03,Surabaya,Coffee,Cafe Latte,3,11.05
+2026-02-04,Yogyakarta,Coffee,Espresso,15,39.33
+2026-02-04,Denpasar,Tea,Matcha Latte,6,22.18
+2026-02-04,Jakarta,Pastry,Banana Bread,17,44.67
+2026-02-05,Denpasar,Coffee,Cold Brew,17,67.33
+2026-02-05,Jakarta,Tea,Jasmine Tea,14,28.59
+2026-02-06,Denpasar,Pastry,Butter Croissant,8,22.13
+2026-02-06,Bandung,Coffee,Cold Brew,4,17.39
+2026-02-06,Jakarta,Tea,Matcha Latte,3,12.57
+2026-02-07,Surabaya,Tea,Matcha Latte,4,16.84
+2026-02-07,Jakarta,Coffee,Espresso,6,15.37
+2026-02-07,Jakarta,Merchandise,Tumbler,35,417.39
+2026-02-08,Denpasar,Coffee,Espresso,16,37.71
+2026-02-08,Surabaya,Pastry,Banana Bread,22,60.62
+2026-02-08,Bandung,Merchandise,Tumbler,24,298.83
+2026-02-09,Yogyakarta,Merchandise,Tumbler,10,124.05
+2026-02-09,Jakarta,Coffee,Espresso,13,31.63
+2026-02-10,Jakarta,Coffee,Cafe Latte,7,26.99
+2026-02-10,Surabaya,Merchandise,Tumbler,21,258.94
+2026-02-10,Denpasar,Coffee,Cold Brew,15,67.94
+2026-02-10,Denpasar,Coffee,Espresso,10,26.72
+2026-02-11,Bandung,Coffee,Cold Brew,3,12.03
+2026-02-11,Surabaya,Tea,Matcha Latte,5,21.58
+2026-02-12,Jakarta,Coffee,Cold Brew,10,43.69
+2026-02-12,Yogyakarta,Coffee,Espresso,3,7.91
+2026-02-13,Bandung,Merchandise,Tumbler,23,266.26
+2026-02-13,Surabaya,Pastry,Butter Croissant,18,51.34
+2026-02-13,Bandung,Coffee,Cafe Latte,3,10.91
+2026-02-13,Yogyakarta,Merchandise,Tumbler,21,237.29
+2026-02-14,Jakarta,Coffee,Cold Brew,23,97.47
+2026-02-14,Denpasar,Coffee,Espresso,24,58.96
+2026-02-14,Yogyakarta,Tea,Matcha Latte,17,73.05
+2026-02-14,Surabaya,Tea,Jasmine Tea,36,83.13
+2026-02-15,Jakarta,Coffee,Espresso,11,29.44
+2026-02-15,Denpasar,Tea,Matcha Latte,24,94.46
+2026-02-16,Yogyakarta,Merchandise,Tumbler,24,272.91
+2026-02-16,Bandung,Tea,Jasmine Tea,18,42.4
+2026-02-17,Denpasar,Coffee,Cold Brew,10,42.17
+2026-02-17,Yogyakarta,Coffee,Cafe Latte,24,93.6
+2026-02-17,Jakarta,Coffee,Cold Brew,8,35.39
+2026-02-17,Denpasar,Coffee,Espresso,13,34.09
+2026-02-18,Denpasar,Merchandise,Tumbler,25,298.4
+2026-02-18,Yogyakarta,Merchandise,Tumbler,6,73.01
+2026-02-18,Bandung,Pastry,Butter Croissant,15,46.5
+2026-02-18,Jakarta,Pastry,Banana Bread,12,33.71
+2026-02-19,Bandung,Tea,Jasmine Tea,22,49.03
+2026-02-19,Jakarta,Merchandise,Tumbler,4,44.59
+2026-02-19,Bandung,Coffee,Cold Brew,6,24.36
+2026-02-19,Bandung,Merchandise,Tumbler,14,164.44
+2026-02-20,Denpasar,Pastry,Butter Croissant,26,76.2
+2026-02-20,Yogyakarta,Coffee,Cold Brew,7,31.46
+2026-02-20,Surabaya,Tea,Jasmine Tea,12,28.33
+2026-02-21,Surabaya,Merchandise,Tumbler,15,192.08
+2026-02-21,Yogyakarta,Merchandise,Tumbler,5,58.06
+2026-02-22,Jakarta,Merchandise,Tumbler,19,234.43
+2026-02-22,Denpasar,Merchandise,Tumbler,14,179.84
+2026-02-22,Denpasar,Coffee,Espresso,15,38.44
+2026-02-23,Denpasar,Tea,Jasmine Tea,12,25.74
+2026-02-23,Bandung,Tea,Jasmine Tea,18,40.27
+2026-02-24,Denpasar,Coffee,Espresso,6,15.82
+2026-02-24,Bandung,Merchandise,Tumbler,12,132.5
+2026-02-25,Bandung,Coffee,Cafe Latte,8,31.1
+2026-02-25,Jakarta,Merchandise,Tumbler,8,98.39
+2026-02-25,Jakarta,Pastry,Butter Croissant,19,60.29
+2026-02-26,Denpasar,Tea,Matcha Latte,13,49.47
+2026-02-26,Denpasar,Tea,Jasmine Tea,16,36.17
+2026-02-26,Surabaya,Pastry,Butter Croissant,27,83.55
+2026-02-27,Bandung,Tea,Jasmine Tea,23,52.17
+2026-02-27,Bandung,Tea,Jasmine Tea,22,48.02
+2026-02-28,Surabaya,Pastry,Banana Bread,5,13.81
+2026-02-28,Surabaya,Coffee,Cafe Latte,24,89.83
+2026-02-28,Jakarta,Merchandise,Tumbler,20,232.66
+2026-02-28,Surabaya,Pastry,Butter Croissant,19,53.31
+2026-03-01,Denpasar,Tea,Matcha Latte,36,154.13
+2026-03-01,Surabaya,Coffee,Cafe Latte,38,153.25
+2026-03-02,Denpasar,Pastry,Banana Bread,15,40.82
+2026-03-02,Jakarta,Coffee,Espresso,25,63.76
+2026-03-02,Yogyakarta,Tea,Jasmine Tea,7,15.1
+2026-03-03,Bandung,Coffee,Espresso,3,7.68
+2026-03-03,Jakarta,Coffee,Cafe Latte,26,103.97
+2026-03-04,Bandung,Tea,Jasmine Tea,5,11.51
+2026-03-04,Bandung,Tea,Jasmine Tea,4,8.1
+2026-03-04,Denpasar,Coffee,Espresso,16,41.84
+2026-03-04,Surabaya,Pastry,Butter Croissant,25,77.13
+2026-03-05,Bandung,Tea,Matcha Latte,24,100.53
+2026-03-05,Yogyakarta,Merchandise,Tumbler,23,283.18
+2026-03-05,Jakarta,Pastry,Banana Bread,26,76.85
+2026-03-05,Jakarta,Pastry,Butter Croissant,27,84.97
+2026-03-06,Surabaya,Merchandise,Tumbler,8,92.48
+2026-03-06,Yogyakarta,Coffee,Cold Brew,18,80.66
+2026-03-06,Yogyakarta,Coffee,Espresso,24,58.54
+2026-03-06,Yogyakarta,Tea,Matcha Latte,6,25.83
+2026-03-07,Yogyakarta,Tea,Jasmine Tea,40,81.39
+2026-03-07,Surabaya,Pastry,Butter Croissant,16,45.16
+2026-03-08,Denpasar,Coffee,Espresso,10,24.86
+2026-03-08,Bandung,Tea,Jasmine Tea,40,90.95
+2026-03-09,Yogyakarta,Tea,Matcha Latte,19,76.38
+2026-03-09,Jakarta,Coffee,Cold Brew,26,116.66
+2026-03-10,Yogyakarta,Coffee,Cold Brew,9,37.24
+2026-03-10,Yogyakarta,Pastry,Banana Bread,4,11.79
+2026-03-10,Surabaya,Pastry,Banana Bread,23,68.42
+2026-03-10,Bandung,Merchandise,Tumbler,7,85.63
+2026-03-11,Surabaya,Pastry,Banana Bread,15,43.19
+2026-03-11,Bandung,Coffee,Cold Brew,7,27.58
+2026-03-11,Jakarta,Tea,Matcha Latte,16,62.48
+2026-03-12,Denpasar,Coffee,Cafe Latte,19,75.38
+2026-03-12,Bandung,Pastry,Banana Bread,28,76.37
+2026-03-12,Bandung,Coffee,Cold Brew,13,55.07
+2026-03-13,Jakarta,Merchandise,Tumbler,12,149.63
+2026-03-13,Denpasar,Tea,Matcha Latte,26,102.84
+2026-03-14,Jakarta,Tea,Matcha Latte,11,45.28
+2026-03-14,Yogyakarta,Coffee,Espresso,15,38.83
+2026-03-14,Bandung,Tea,Jasmine Tea,21,49.79
+2026-03-14,Jakarta,Pastry,Butter Croissant,15,44.82
+2026-03-15,Bandung,Pastry,Butter Croissant,15,42.66
+2026-03-15,Surabaya,Coffee,Espresso,8,18.95
+2026-03-15,Bandung,Coffee,Cafe Latte,31,115.26
+2026-03-16,Jakarta,Tea,Matcha Latte,3,12.69
+2026-03-16,Jakarta,Coffee,Cafe Latte,18,70.28
+2026-03-16,Yogyakarta,Pastry,Banana Bread,5,14.14
+2026-03-16,Yogyakarta,Pastry,Banana Bread,5,13.16
+2026-03-17,Bandung,Coffee,Espresso,10,23.31
+2026-03-17,Jakarta,Coffee,Cafe Latte,7,27.23
+2026-03-17,Denpasar,Tea,Matcha Latte,5,20.03
+2026-03-17,Denpasar,Merchandise,Tumbler,18,211.04
+2026-03-18,Surabaya,Coffee,Espresso,27,65.25
+2026-03-18,Surabaya,Coffee,Espresso,26,68.67
+2026-03-18,Surabaya,Pastry,Banana Bread,9,25.65
+2026-03-19,Jakarta,Coffee,Espresso,5,11.97
+2026-03-19,Yogyakarta,Tea,Jasmine Tea,6,13.86
+2026-03-19,Yogyakarta,Coffee,Cafe Latte,26,94.25
+2026-03-20,Denpasar,Tea,Matcha Latte,7,26.4
+2026-03-20,Yogyakarta,Tea,Matcha Latte,8,31.57
+2026-03-20,Bandung,Coffee,Espresso,8,20.63
+2026-03-21,Jakarta,Coffee,Cold Brew,13,56.26
+2026-03-21,Surabaya,Merchandise,Tumbler,5,55.64
+2026-03-21,Bandung,Coffee,Espresso,22,54.9
+2026-03-21,Yogyakarta,Merchandise,Tumbler,13,160.37
+2026-03-22,Yogyakarta,Coffee,Espresso,7,16.58
+2026-03-22,Bandung,Tea,Matcha Latte,30,116.5
+2026-03-22,Yogyakarta,Pastry,Banana Bread,20,53.01
+2026-03-23,Jakarta,Pastry,Banana Bread,17,45.37
+2026-03-23,Surabaya,Pastry,Butter Croissant,18,51.35
+2026-03-23,Denpasar,Merchandise,Tumbler,8,94
+2026-03-23,Surabaya,Tea,Matcha Latte,22,90.17
+2026-03-24,Surabaya,Merchandise,Tumbler,23,286.54
+2026-03-24,Jakarta,Coffee,Espresso,20,50.31
+2026-03-25,Yogyakarta,Tea,Jasmine Tea,13,29.17
+2026-03-25,Jakarta,Pastry,Butter Croissant,27,80.18
+2026-03-25,Jakarta,Tea,Jasmine Tea,28,64.17
+2026-03-26,Surabaya,Coffee,Espresso,14,32.76
+2026-03-26,Jakarta,Merchandise,Tumbler,24,306.88
+2026-03-26,Yogyakarta,Merchandise,Tumbler,21,264.73
+2026-03-27,Surabaya,Tea,Matcha Latte,5,20.99
+2026-03-27,Denpasar,Merchandise,Tumbler,21,270.4
+2026-03-28,Jakarta,Pastry,Banana Bread,8,23.45
+2026-03-28,Surabaya,Tea,Matcha Latte,5,19.78
+2026-03-28,Jakarta,Pastry,Butter Croissant,14,39.57
+2026-03-28,Surabaya,Pastry,Butter Croissant,17,47.72
+2026-03-29,Denpasar,Pastry,Butter Croissant,32,103.62
+2026-03-29,Surabaya,Pastry,Butter Croissant,36,115.36
+2026-03-30,Surabaya,Coffee,Cold Brew,9,39.82
+2026-03-30,Jakarta,Coffee,Espresso,14,36.41
+2026-03-31,Denpasar,Merchandise,Tumbler,12,140.84
+2026-03-31,Bandung,Pastry,Banana Bread,18,53.46
+2026-04-01,Surabaya,Coffee,Espresso,4,10.44
+2026-04-01,Denpasar,Pastry,Butter Croissant,24,68.59
+2026-04-01,Yogyakarta,Coffee,Cafe Latte,24,91.32
+2026-04-01,Jakarta,Coffee,Cold Brew,26,106.85
+2026-04-02,Denpasar,Coffee,Cafe Latte,11,42.94
+2026-04-02,Jakarta,Pastry,Butter Croissant,21,64.19
+2026-04-03,Jakarta,Pastry,Butter Croissant,13,38.53
+2026-04-03,Yogyakarta,Tea,Matcha Latte,21,87.36
+2026-04-03,Bandung,Pastry,Banana Bread,7,20.17
+2026-04-03,Surabaya,Tea,Jasmine Tea,6,13.9
+2026-04-04,Jakarta,Merchandise,Tumbler,26,311.84
+2026-04-04,Denpasar,Tea,Matcha Latte,43,165.86
+2026-04-05,Bandung,Tea,Jasmine Tea,16,34.71
+2026-04-05,Bandung,Tea,Matcha Latte,10,37.21
+2026-04-06,Jakarta,Pastry,Banana Bread,17,46.72
+2026-04-06,Bandung,Pastry,Banana Bread,13,33.89
+2026-04-06,Jakarta,Coffee,Cafe Latte,13,46.11
+2026-04-07,Jakarta,Pastry,Banana Bread,30,84.46
+2026-04-07,Denpasar,Coffee,Espresso,8,19.83
+2026-04-07,Bandung,Coffee,Cold Brew,7,30.12
+2026-04-07,Jakarta,Coffee,Espresso,16,42.1
+2026-04-08,Denpasar,Tea,Jasmine Tea,18,42.22
+2026-04-08,Jakarta,Merchandise,Tumbler,20,251.54
+2026-04-08,Denpasar,Pastry,Butter Croissant,7,21.34
+2026-04-09,Denpasar,Merchandise,Tumbler,6,73.19
+2026-04-09,Surabaya,Tea,Matcha Latte,14,59.15
+2026-04-09,Denpasar,Coffee,Espresso,26,61.32
+2026-04-10,Surabaya,Coffee,Cold Brew,23,91.17
+2026-04-10,Denpasar,Merchandise,Tumbler,10,122.09
+2026-04-10,Surabaya,Pastry,Banana Bread,18,52.77
+2026-04-10,Jakarta,Pastry,Banana Bread,12,34.86
+2026-04-11,Surabaya,Coffee,Espresso,39,103
+2026-04-11,Surabaya,Coffee,Cafe Latte,26,99.72
+2026-04-12,Jakarta,Tea,Matcha Latte,28,104.41
+2026-04-12,Surabaya,Pastry,Butter Croissant,35,100.81
+2026-04-12,Surabaya,Coffee,Cold Brew,7,29.45
+2026-04-13,Bandung,Coffee,Cold Brew,26,105.61
+2026-04-13,Jakarta,Tea,Jasmine Tea,26,55.13
+2026-04-13,Surabaya,Coffee,Espresso,6,15.35
+2026-04-13,Denpasar,Pastry,Banana Bread,11,32.97
+2026-04-14,Jakarta,Coffee,Cafe Latte,20,71.58
+2026-04-14,Yogyakarta,Pastry,Banana Bread,4,11.01
+2026-04-14,Bandung,Merchandise,Tumbler,4,51.02
+2026-04-14,Bandung,Coffee,Espresso,22,55.22
+2026-04-15,Yogyakarta,Tea,Matcha Latte,5,19.34
+2026-04-15,Jakarta,Merchandise,Tumbler,24,282.03
+2026-04-15,Surabaya,Coffee,Cold Brew,16,66.45
+2026-04-16,Yogyakarta,Tea,Matcha Latte,12,48.51
+2026-04-16,Jakarta,Merchandise,Tumbler,29,362.83
+2026-04-16,Bandung,Tea,Jasmine Tea,24,56.16
+2026-04-16,Denpasar,Pastry,Butter Croissant,24,70.63
+2026-04-17,Jakarta,Tea,Matcha Latte,6,22.67
+2026-04-17,Yogyakarta,Pastry,Banana Bread,28,79.9
+2026-04-18,Bandung,Pastry,Banana Bread,36,100.3
+2026-04-18,Surabaya,Tea,Jasmine Tea,45,99.88
+2026-04-19,Surabaya,Tea,Jasmine Tea,38,88.93
+2026-04-19,Denpasar,Tea,Jasmine Tea,34,74.71
+2026-04-20,Bandung,Tea,Matcha Latte,14,54.34
+2026-04-20,Yogyakarta,Merchandise,Tumbler,10,116.52
+2026-04-20,Jakarta,Coffee,Cold Brew,21,94.25
+2026-04-20,Denpasar,Tea,Matcha Latte,30,113.14
+2026-04-21,Jakarta,Coffee,Espresso,29,67.1
+2026-04-21,Bandung,Merchandise,Tumbler,9,110.93
+2026-04-21,Bandung,Pastry,Banana Bread,14,36.82
+2026-04-21,Denpasar,Tea,Jasmine Tea,15,32.8
+2026-04-22,Surabaya,Coffee,Cafe Latte,21,84.74
+2026-04-22,Yogyakarta,Pastry,Banana Bread,10,26.54
+2026-04-22,Surabaya,Pastry,Butter Croissant,29,81.07
+2026-04-22,Yogyakarta,Coffee,Cafe Latte,29,114.72
+2026-04-23,Surabaya,Pastry,Butter Croissant,21,67.29
+2026-04-23,Jakarta,Tea,Matcha Latte,9,36.84
+2026-04-24,Jakarta,Pastry,Banana Bread,9,24.54
+2026-04-24,Denpasar,Coffee,Cafe Latte,16,63.71
+2026-04-24,Yogyakarta,Pastry,Butter Croissant,17,53.4
+2026-04-24,Bandung,Coffee,Cafe Latte,21,84.39
+2026-04-25,Bandung,Coffee,Cold Brew,29,118.17
+2026-04-25,Denpasar,Tea,Jasmine Tea,20,44.53
+2026-04-25,Yogyakarta,Pastry,Butter Croissant,40,128.23
+2026-04-26,Denpasar,Tea,Matcha Latte,15,56.44
+2026-04-26,Surabaya,Tea,Matcha Latte,46,175.5
+2026-04-26,Yogyakarta,Pastry,Butter Croissant,29,81.55
+2026-04-27,Jakarta,Coffee,Cafe Latte,13,47.98
+2026-04-27,Surabaya,Merchandise,Tumbler,5,59.24
+2026-04-28,Yogyakarta,Coffee,Espresso,15,37.76
+2026-04-28,Bandung,Pastry,Banana Bread,25,73.39
+2026-04-29,Denpasar,Pastry,Banana Bread,13,39.07
+2026-04-29,Jakarta,Tea,Jasmine Tea,5,11.24
+2026-04-29,Bandung,Merchandise,Tumbler,16,189.35
+2026-04-30,Yogyakarta,Coffee,Cafe Latte,13,48.36
+2026-04-30,Jakarta,Coffee,Cold Brew,23,91.46
+2026-04-30,Yogyakarta,Pastry,Banana Bread,5,14.17
+2026-05-01,Jakarta,Pastry,Butter Croissant,4,11.23
+2026-05-01,Jakarta,Tea,Matcha Latte,5,18.77
+2026-05-01,Yogyakarta,Coffee,Cafe Latte,32,115.56
+2026-05-02,Denpasar,Coffee,Cafe Latte,42,166.95
+2026-05-02,Jakarta,Merchandise,Tumbler,37,431.12
+2026-05-03,Bandung,Coffee,Cafe Latte,44,172.73
+2026-05-03,Surabaya,Coffee,Cafe Latte,20,79.35
+2026-05-04,Bandung,Tea,Matcha Latte,20,78.23
+2026-05-04,Bandung,Tea,Jasmine Tea,6,13.7
+2026-05-05,Bandung,Tea,Matcha Latte,4,17.2
+2026-05-05,Bandung,Coffee,Cafe Latte,32,121.97
+2026-05-06,Bandung,Coffee,Espresso,23,53.95
+2026-05-06,Yogyakarta,Coffee,Cafe Latte,8,30.26
+2026-05-06,Yogyakarta,Coffee,Cafe Latte,17,69.35
+2026-05-07,Denpasar,Coffee,Cafe Latte,10,39.33
+2026-05-07,Yogyakarta,Tea,Jasmine Tea,14,32.6
+2026-05-07,Bandung,Pastry,Butter Croissant,17,54.84
+2026-05-07,Surabaya,Pastry,Banana Bread,5,13.46
+2026-05-08,Denpasar,Pastry,Butter Croissant,32,99.18
+2026-05-08,Jakarta,Pastry,Butter Croissant,13,36.74
+2026-05-08,Surabaya,Tea,Matcha Latte,10,42.61
+2026-05-08,Denpasar,Merchandise,Tumbler,12,133.41
+2026-05-09,Denpasar,Pastry,Banana Bread,38,108.92
+2026-05-09,Bandung,Tea,Matcha Latte,9,36.35
+2026-05-09,Jakarta,Tea,Matcha Latte,15,56.58
+2026-05-10,Bandung,Coffee,Espresso,13,35.1
+2026-05-10,Bandung,Pastry,Butter Croissant,47,134.68
+2026-05-10,Denpasar,Tea,Matcha Latte,43,174.23
+2026-05-11,Jakarta,Coffee,Cafe Latte,33,125.86
+2026-05-11,Denpasar,Coffee,Cafe Latte,31,127.04
+2026-05-12,Bandung,Tea,Jasmine Tea,9,19.47
+2026-05-12,Bandung,Pastry,Banana Bread,8,20.91
+2026-05-13,Jakarta,Merchandise,Tumbler,9,100.88
+2026-05-13,Jakarta,Pastry,Butter Croissant,26,78.87
+2026-05-13,Surabaya,Coffee,Espresso,9,21.15
+2026-05-14,Yogyakarta,Coffee,Espresso,8,19.55
+2026-05-14,Yogyakarta,Tea,Jasmine Tea,18,40.56
+2026-05-15,Bandung,Tea,Matcha Latte,12,50.51
+2026-05-15,Denpasar,Pastry,Banana Bread,33,91.77
+2026-05-16,Jakarta,Tea,Jasmine Tea,11,25.37
+2026-05-16,Surabaya,Coffee,Espresso,6,13.82
+2026-05-17,Denpasar,Coffee,Cafe Latte,29,116.87
+2026-05-17,Denpasar,Merchandise,Tumbler,46,567.8
+2026-05-18,Bandung,Merchandise,Tumbler,30,362.53
+2026-05-18,Surabaya,Pastry,Butter Croissant,4,12.54
+2026-05-19,Yogyakarta,Coffee,Cold Brew,33,148.53
+2026-05-19,Surabaya,Coffee,Cafe Latte,30,107.34
+2026-05-19,Surabaya,Coffee,Cafe Latte,4,15.15
+2026-05-19,Jakarta,Coffee,Cold Brew,33,135.02
+2026-05-20,Surabaya,Tea,Jasmine Tea,13,29.12
+2026-05-20,Bandung,Merchandise,Tumbler,4,49.44
+2026-05-20,Denpasar,Tea,Jasmine Tea,12,26.52
+2026-05-20,Yogyakarta,Tea,Matcha Latte,28,117.51
+2026-05-21,Bandung,Pastry,Butter Croissant,12,37.83
+2026-05-21,Surabaya,Tea,Matcha Latte,33,135.1
+2026-05-22,Denpasar,Pastry,Butter Croissant,23,65.21
+2026-05-22,Surabaya,Merchandise,Tumbler,9,114.46
+2026-05-22,Jakarta,Tea,Matcha Latte,17,64.51
+2026-05-23,Surabaya,Merchandise,Tumbler,16,202.86
+2026-05-23,Surabaya,Pastry,Butter Croissant,31,94.75
+2026-05-23,Denpasar,Coffee,Cafe Latte,35,140.52
+2026-05-24,Bandung,Coffee,Espresso,45,120.02
+2026-05-24,Jakarta,Coffee,Cold Brew,49,221.37
+2026-05-25,Bandung,Coffee,Espresso,21,48.37
+2026-05-25,Bandung,Coffee,Cold Brew,5,20.25
+2026-05-26,Bandung,Coffee,Espresso,26,62.29
+2026-05-26,Bandung,Tea,Jasmine Tea,26,60.55
+2026-05-27,Jakarta,Pastry,Butter Croissant,7,20.67
+2026-05-27,Yogyakarta,Coffee,Cold Brew,16,68.5
+2026-05-27,Jakarta,Merchandise,Tumbler,12,141.33
+2026-05-28,Bandung,Tea,Matcha Latte,14,56.98
+2026-05-28,Bandung,Coffee,Cold Brew,20,80.74
+2026-05-29,Surabaya,Tea,Matcha Latte,33,127.96
+2026-05-29,Denpasar,Tea,Matcha Latte,5,20.93
+2026-05-30,Jakarta,Coffee,Cafe Latte,6,24.36
+2026-05-30,Bandung,Coffee,Espresso,49,114.2
+2026-05-30,Bandung,Tea,Jasmine Tea,39,81.57
+2026-05-31,Jakarta,Merchandise,Tumbler,18,228.29
+2026-05-31,Bandung,Merchandise,Tumbler,36,421.27
+2026-06-01,Bandung,Coffee,Espresso,27,64.41
+2026-06-01,Denpasar,Tea,Matcha Latte,25,100.27
+2026-06-01,Yogyakarta,Tea,Jasmine Tea,14,31.4
+2026-06-02,Jakarta,Coffee,Espresso,12,28.91
+2026-06-02,Bandung,Pastry,Butter Croissant,8,22.12
+2026-06-03,Surabaya,Coffee,Espresso,16,39.42
+2026-06-03,Yogyakarta,Coffee,Espresso,33,78.26
+2026-06-03,Jakarta,Coffee,Espresso,4,10.41
+2026-06-03,Yogyakarta,Merchandise,Tumbler,8,88.45
+2026-06-04,Surabaya,Tea,Matcha Latte,27,110.26
+2026-06-04,Jakarta,Pastry,Banana Bread,19,56.8
+2026-06-05,Bandung,Tea,Jasmine Tea,34,75.54
+2026-06-05,Jakarta,Coffee,Cafe Latte,17,63.11
+2026-06-05,Surabaya,Pastry,Butter Croissant,29,83.91
+2026-06-05,Surabaya,Pastry,Butter Croissant,22,69.18
+2026-06-06,Bandung,Tea,Jasmine Tea,20,42.11
+2026-06-06,Jakarta,Coffee,Espresso,18,41.57
+2026-06-06,Jakarta,Pastry,Butter Croissant,16,46.61
+2026-06-07,Bandung,Merchandise,Tumbler,28,320.49
+2026-06-07,Yogyakarta,Coffee,Cold Brew,14,59.59
+2026-06-07,Jakarta,Pastry,Banana Bread,20,56.61
+2026-06-08,Surabaya,Coffee,Cafe Latte,4,14
+2026-06-08,Denpasar,Coffee,Cafe Latte,30,118.41
+2026-06-08,Denpasar,Pastry,Banana Bread,22,62.05
+2026-06-09,Surabaya,Pastry,Butter Croissant,21,66.98
+2026-06-09,Surabaya,Coffee,Cafe Latte,4,14.58
+2026-06-10,Yogyakarta,Pastry,Banana Bread,13,38.31
+2026-06-10,Bandung,Tea,Jasmine Tea,31,64.27
+2026-06-10,Yogyakarta,Merchandise,Tumbler,25,313.63
+2026-06-11,Jakarta,Merchandise,Tumbler,8,102.77
+2026-06-11,Jakarta,Tea,Matcha Latte,22,89.54
+2026-06-11,Jakarta,Merchandise,Tumbler,25,310.69
+2026-06-12,Surabaya,Coffee,Espresso,10,24.23
+2026-06-12,Jakarta,Tea,Jasmine Tea,7,14.33
+2026-06-12,Bandung,Coffee,Cafe Latte,27,110.05
+2026-06-12,Yogyakarta,Coffee,Cafe Latte,32,121.39
+2026-06-13,Denpasar,Merchandise,Tumbler,18,227.56
+2026-06-13,Denpasar,Tea,Jasmine Tea,41,90.85
+2026-06-14,Surabaya,Pastry,Butter Croissant,43,135.13
+2026-06-14,Yogyakarta,Tea,Jasmine Tea,10,21.37
+2026-06-15,Yogyakarta,Merchandise,Tumbler,20,252.97
+2026-06-15,Jakarta,Pastry,Butter Croissant,21,64.9
+2026-06-16,Surabaya,Merchandise,Tumbler,8,92.14
+2026-06-16,Denpasar,Coffee,Espresso,4,9.65
+2026-06-16,Denpasar,Tea,Matcha Latte,6,25.35
+2026-06-16,Surabaya,Tea,Matcha Latte,28,104.48
+2026-06-17,Surabaya,Coffee,Cafe Latte,21,77.79
+2026-06-17,Jakarta,Pastry,Banana Bread,24,63.54
+2026-06-17,Jakarta,Tea,Jasmine Tea,21,48.17
+2026-06-17,Denpasar,Tea,Jasmine Tea,13,30.74
+2026-06-18,Bandung,Tea,Jasmine Tea,34,72.4
+2026-06-18,Yogyakarta,Pastry,Butter Croissant,28,85.63
+2026-06-18,Yogyakarta,Pastry,Butter Croissant,11,31.57
+2026-06-18,Bandung,Tea,Jasmine Tea,28,64.14
+2026-06-19,Bandung,Coffee,Cold Brew,7,28.92
+2026-06-19,Bandung,Coffee,Cafe Latte,21,74.55
+2026-06-20,Surabaya,Tea,Matcha Latte,29,107.37
+2026-06-20,Denpasar,Pastry,Banana Bread,47,135.46
+2026-06-20,Jakarta,Coffee,Cafe Latte,12,46.93
+2026-06-21,Surabaya,Pastry,Banana Bread,39,105.54
+2026-06-21,Jakarta,Coffee,Cold Brew,50,219.57
+2026-06-21,Jakarta,Pastry,Banana Bread,6,17.06
+2026-06-22,Yogyakarta,Pastry,Banana Bread,17,44.33
+2026-06-22,Surabaya,Tea,Matcha Latte,10,39.01
+2026-06-22,Jakarta,Coffee,Cold Brew,7,30.78
+2026-06-23,Surabaya,Coffee,Cold Brew,24,100.09
+2026-06-23,Surabaya,Tea,Jasmine Tea,19,43.28
+2026-06-23,Denpasar,Coffee,Cold Brew,26,117.85
+2026-06-23,Yogyakarta,Coffee,Cafe Latte,9,35.96
+2026-06-24,Denpasar,Tea,Jasmine Tea,19,41.14
+2026-06-24,Yogyakarta,Coffee,Espresso,13,29.9
+2026-06-24,Denpasar,Pastry,Banana Bread,19,50.28
+2026-06-25,Surabaya,Tea,Jasmine Tea,20,42.47
+2026-06-25,Yogyakarta,Tea,Jasmine Tea,9,19.97
+2026-06-25,Bandung,Tea,Matcha Latte,7,28.79
+2026-06-26,Surabaya,Pastry,Butter Croissant,6,17.85
+2026-06-26,Bandung,Coffee,Espresso,22,55.36
+2026-06-27,Surabaya,Coffee,Cold Brew,29,124.59
+2026-06-27,Bandung,Coffee,Cold Brew,27,118.18
+2026-06-27,Yogyakarta,Merchandise,Tumbler,31,362.12
+2026-06-28,Jakarta,Tea,Matcha Latte,38,145.75
+2026-06-28,Surabaya,Pastry,Butter Croissant,6,17.98
+2026-06-28,Jakarta,Coffee,Cold Brew,40,170.78
+2026-06-28,Surabaya,Tea,Jasmine Tea,50,107.14
+2026-06-29,Surabaya,Pastry,Butter Croissant,33,105.69
+2026-06-29,Jakarta,Coffee,Cafe Latte,30,109.83
+2026-06-29,Bandung,Pastry,Banana Bread,7,19.48
+2026-06-30,Jakarta,Coffee,Espresso,33,84.38
+2026-06-30,Denpasar,Tea,Jasmine Tea,29,68.86
+2026-06-30,Surabaya,Pastry,Banana Bread,20,52.21
+2026-07-01,Jakarta,Pastry,Banana Bread,4,11.65
+2026-07-01,Yogyakarta,Tea,Jasmine Tea,17,36.37
+2026-07-01,Surabaya,Merchandise,Tumbler,19,243.68
+2026-07-02,Bandung,Merchandise,Tumbler,36,417.25
+2026-07-02,Yogyakarta,Merchandise,Tumbler,4,48.31
+2026-07-03,Denpasar,Pastry,Butter Croissant,34,107.82
+2026-07-03,Bandung,Tea,Jasmine Tea,22,51.79
+2026-07-04,Bandung,Pastry,Banana Bread,30,78.53
+2026-07-04,Jakarta,Coffee,Cafe Latte,32,131.03
+2026-07-04,Surabaya,Coffee,Espresso,17,42.89
+2026-07-04,Jakarta,Tea,Matcha Latte,40,163.42
+2026-07-05,Yogyakarta,Coffee,Espresso,15,34.53
+2026-07-05,Surabaya,Coffee,Espresso,53,140.45
+2026-07-06,Bandung,Pastry,Banana Bread,37,98.34
+2026-07-06,Yogyakarta,Pastry,Banana Bread,25,66.15
+2026-07-07,Jakarta,Tea,Jasmine Tea,13,30.18
+2026-07-07,Denpasar,Pastry,Banana Bread,34,92.98
+2026-07-08,Bandung,Tea,Jasmine Tea,18,38.3
+2026-07-08,Jakarta,Coffee,Cafe Latte,7,27.48
+2026-07-08,Surabaya,Pastry,Butter Croissant,30,93.87
+2026-07-08,Yogyakarta,Tea,Jasmine Tea,12,28.07
+2026-07-09,Denpasar,Coffee,Espresso,16,38
+2026-07-09,Surabaya,Merchandise,Tumbler,4,46.85
+2026-07-09,Denpasar,Coffee,Espresso,37,85.5
+2026-07-09,Bandung,Tea,Matcha Latte,9,34.52
+2026-07-10,Denpasar,Coffee,Cold Brew,28,108.58
+2026-07-10,Denpasar,Pastry,Butter Croissant,6,16.97
+2026-07-11,Yogyakarta,Tea,Matcha Latte,22,84.95
+2026-07-11,Yogyakarta,Coffee,Espresso,52,136.73
+2026-07-12,Yogyakarta,Merchandise,Tumbler,45,572.91
+2026-07-12,Denpasar,Tea,Matcha Latte,52,210.19
+2026-07-13,Jakarta,Pastry,Butter Croissant,10,29.05
+2026-07-13,Denpasar,Tea,Jasmine Tea,30,70.35
+2026-07-14,Jakarta,Merchandise,Tumbler,4,46.3
+2026-07-14,Bandung,Coffee,Espresso,7,16.16
+2026-07-14,Denpasar,Coffee,Espresso,15,35.38
+2026-07-14,Yogyakarta,Coffee,Espresso,19,46.52
+2026-07-15,Bandung,Coffee,Cafe Latte,30,115.11
+2026-07-15,Bandung,Coffee,Espresso,7,17.86
+2026-07-16,Surabaya,Coffee,Espresso,24,62.45
+2026-07-16,Denpasar,Tea,Jasmine Tea,6,12.32
+2026-07-16,Denpasar,Merchandise,Tumbler,5,60.69
+2026-07-16,Denpasar,Pastry,Banana Bread,30,86.35
+2026-07-17,Yogyakarta,Coffee,Cafe Latte,38,138.65
+2026-07-17,Denpasar,Pastry,Banana Bread,36,98.38
+2026-07-17,Bandung,Tea,Jasmine Tea,9,19.48
+2026-07-17,Yogyakarta,Pastry,Banana Bread,36,103.23
+2026-07-18,Surabaya,Coffee,Espresso,26,68.99
+2026-07-18,Bandung,Pastry,Banana Bread,11,32.42
+2026-07-18,Bandung,Tea,Jasmine Tea,22,50.04
+2026-07-19,Surabaya,Coffee,Espresso,50,126.12
+2026-07-19,Jakarta,Pastry,Banana Bread,39,111.66
+2026-07-19,Yogyakarta,Coffee,Cold Brew,39,161.3
+2026-07-20,Jakarta,Merchandise,Tumbler,27,345.51
+2026-07-20,Jakarta,Coffee,Espresso,36,85.76
+2026-07-20,Jakarta,Pastry,Butter Croissant,12,38.18
+2026-07-21,Surabaya,Pastry,Banana Bread,18,48.77
+2026-07-21,Bandung,Tea,Jasmine Tea,26,58.27
+2026-07-21,Jakarta,Coffee,Cafe Latte,21,77.28
+2026-07-22,Jakarta,Merchandise,Tumbler,32,397.86
+2026-07-22,Denpasar,Pastry,Banana Bread,21,60.84
+2026-07-22,Yogyakarta,Coffee,Cafe Latte,9,33.59
+2026-07-23,Bandung,Pastry,Banana Bread,18,48.77
+2026-07-23,Bandung,Pastry,Butter Croissant,27,81.28
+2026-07-23,Surabaya,Pastry,Banana Bread,12,33.93
+2026-07-24,Jakarta,Pastry,Banana Bread,37,111.42
+2026-07-24,Denpasar,Coffee,Cafe Latte,26,98.21
+2026-07-25,Yogyakarta,Tea,Matcha Latte,29,107.52
+2026-07-25,Surabaya,Tea,Matcha Latte,53,215.42
+2026-07-26,Bandung,Merchandise,Tumbler,47,550.57
+2026-07-26,Yogyakarta,Coffee,Cafe Latte,44,176.79
+2026-07-26,Yogyakarta,Pastry,Butter Croissant,11,33.62
+2026-07-26,Bandung,Tea,Jasmine Tea,13,28.92
+2026-07-27,Denpasar,Pastry,Banana Bread,34,93.88
+2026-07-27,Yogyakarta,Pastry,Banana Bread,38,101.87
+2026-07-27,Yogyakarta,Coffee,Espresso,34,81.38
+2026-07-27,Jakarta,Coffee,Cold Brew,25,111.07
+2026-07-28,Yogyakarta,Pastry,Butter Croissant,15,46.55
+2026-07-28,Yogyakarta,Pastry,Butter Croissant,12,38.39
+2026-07-29,Yogyakarta,Coffee,Cold Brew,18,78.4
+2026-07-29,Yogyakarta,Coffee,Cold Brew,20,87.73
+2026-07-30,Jakarta,Pastry,Banana Bread,14,38.01
+2026-07-30,Jakarta,Pastry,Banana Bread,8,24.16
+2026-07-30,Jakarta,Merchandise,Tumbler,26,322.5
+2026-07-30,Bandung,Tea,Jasmine Tea,31,63.8
+2026-07-31,Surabaya,Coffee,Cafe Latte,39,155.2
+2026-07-31,Jakarta,Tea,Jasmine Tea,22,49.69
+2026-07-31,Denpasar,Tea,Jasmine Tea,34,70.33

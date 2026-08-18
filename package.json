@@ -1,0 +1,13 @@
+{
+  "name": "vizdrop",
+  "version": "1.0.0",
+  "private": true,
+  "description": "VizDrop — drop a spreadsheet, get a dashboard. Static site lives in vizdrop/.",
+  "scripts": {
+    "dev": "powershell -NoProfile -ExecutionPolicy Bypass -File tools/server.ps1 -Port 8321",
+    "test": "playwright test"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.46.0"
+  }
+}

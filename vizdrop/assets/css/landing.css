@@ -1,0 +1,112 @@
+/* Landing page */
+.nav {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 18px 20px;
+}
+.nav .links { margin-left: auto; display: flex; gap: 22px; align-items: center; }
+.nav .links a { color: var(--ink2); text-decoration: none; font-size: 14.5px; }
+.nav .links a:hover { color: var(--ink); }
+@media (max-width: 640px) { .nav .links a:not(.btn) { display: none; } }
+
+.wrap { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
+
+.hero { text-align: center; padding: 56px 0 30px; }
+.hero h1 { font-size: clamp(30px, 5.5vw, 52px); letter-spacing: -0.025em; line-height: 1.12; }
+.hero .sub { color: var(--ink2); font-size: clamp(15.5px, 2vw, 18px); max-width: 620px; margin: 18px auto 28px; }
+.hero .cta-row { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+.hero .cta-row .btn { padding: 12px 22px; font-size: 16px; border-radius: 12px; }
+.hero .no-signup { color: var(--muted); font-size: 13px; margin-top: 14px; }
+
+.hero-visual {
+  max-width: 860px;
+  margin: 44px auto 0;
+  padding: 0 8px;
+}
+.hero-visual svg { width: 100%; height: auto; display: block; border-radius: 18px; box-shadow: var(--shadow-lg); }
+
+section.block { padding: 64px 0 8px; }
+.block h2 { font-size: clamp(22px, 3.2vw, 30px); letter-spacing: -0.015em; text-align: center; }
+.block .block-sub { text-align: center; color: var(--ink2); max-width: 560px; margin: 10px auto 36px; }
+
+.steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+@media (max-width: 760px) { .steps { grid-template-columns: 1fr; } }
+.step { padding: 24px; }
+.step .n {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 999px;
+  background: var(--accent);
+  color: var(--accent-ink);
+  font-weight: 700;
+  font-size: 14.5px;
+  margin-bottom: 12px;
+}
+.step h3 { font-size: 16.5px; margin-bottom: 6px; }
+.step p { color: var(--ink2); font-size: 14.5px; margin: 0; }
+
+.features { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+@media (max-width: 860px) { .features { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 560px) { .features { grid-template-columns: 1fr; } }
+.feature { padding: 22px; }
+.feature .ic { color: var(--accent); margin-bottom: 10px; }
+.feature h3 { font-size: 15.5px; margin-bottom: 5px; }
+.feature p { color: var(--ink2); font-size: 14px; margin: 0; }
+
+.pricing { display: grid; grid-template-columns: repeat(2, minmax(0, 340px)); gap: 18px; justify-content: center; }
+@media (max-width: 720px) { .pricing { grid-template-columns: minmax(0, 400px); } }
+.plan { padding: 28px; text-align: left; position: relative; }
+.plan.pro { border-color: var(--accent); box-shadow: 0 0 0 1px var(--accent), var(--shadow-lg); }
+.plan .flag {
+  position: absolute;
+  top: -12px;
+  right: 20px;
+  background: var(--accent);
+  color: var(--accent-ink);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  border-radius: 999px;
+  padding: 3px 12px;
+}
+.plan h3 { font-size: 17px; }
+.plan .price { font-size: 38px; font-weight: 700; margin: 6px 0 2px; letter-spacing: -0.02em; }
+.plan .price small { font-size: 14px; color: var(--muted); font-weight: 500; }
+.plan ul { list-style: none; margin: 16px 0 22px; padding: 0; color: var(--ink2); font-size: 14.5px; }
+.plan li { padding: 5px 0 5px 26px; position: relative; }
+.plan li::before { content: "✓"; position: absolute; left: 2px; color: var(--good); font-weight: 700; }
+.plan .btn { width: 100%; justify-content: center; }
+
+.faq { max-width: 640px; margin: 0 auto; }
+.faq details { border-bottom: 1px solid var(--grid); padding: 4px 0; }
+.faq summary {
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 15.5px;
+  padding: 14px 0;
+  list-style: none;
+  display: flex;
+  align-items: center;
+}
+.faq summary::after { content: "+"; margin-left: auto; color: var(--muted); font-size: 20px; font-weight: 400; }
+.faq details[open] summary::after { content: "–"; }
+.faq details p { color: var(--ink2); font-size: 14.5px; margin: 0 0 16px; }
+
+.final-cta { text-align: center; padding: 70px 0 30px; }
+.final-cta h2 { font-size: clamp(24px, 3.6vw, 34px); letter-spacing: -0.02em; margin-bottom: 22px; }
+
+footer {
+  border-top: 1px solid var(--grid);
+  margin-top: 60px;
+  padding: 26px 20px 40px;
+  text-align: center;
+  color: var(--muted);
+  font-size: 13px;
+}
+footer a { color: var(--muted); }

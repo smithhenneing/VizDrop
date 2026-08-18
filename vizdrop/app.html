@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>VizDrop — turn your spreadsheet into a dashboard</title>
+  <meta name="description" content="Drop an Excel, CSV, or JSON file and get a beautiful, presentation-ready dashboard in seconds. Your data never leaves your browser.">
+  <meta name="theme-color" content="#f9f9f7">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="VizDrop — turn your spreadsheet into a dashboard">
+  <meta property="og:description" content="Drop an Excel, CSV, or JSON file and get a presentation-ready dashboard in seconds.">
+  <meta property="og:image" content="assets/og-image.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Crect x='1' y='8' width='3.4' height='7' rx='1' fill='%232a78d6'/%3E%3Crect x='6.3' y='4' width='3.4' height='11' rx='1' fill='%23eb6834'/%3E%3Crect x='11.6' y='1' width='3.4' height='14' rx='1' fill='%231baf7a'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="assets/css/tokens.css">
+  <link rel="stylesheet" href="assets/css/app.css">
+  <script>
+    // set theme before first paint to avoid a flash
+    (function () {
+      var t = localStorage.getItem('vizdrop.theme');
+      if (!t) t = matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+      document.documentElement.dataset.theme = t;
+    })();
+  </script>
+  <script defer src="assets/vendor/xlsx.full.min.js"></script>
+  <script defer src="assets/vendor/papaparse.min.js"></script>
+</head>
+<body>
+
+<header class="topbar">
+  <a class="brand" href="index.html">
+    <svg width="20" height="20" viewBox="0 0 16 16"><rect x="1" y="8" width="3.4" height="7" rx="1" fill="#2a78d6"/><rect x="6.3" y="4" width="3.4" height="11" rx="1" fill="#eb6834"/><rect x="11.6" y="1" width="3.4" height="14" rx="1" fill="#1baf7a"/></svg>
+    VizDrop
+  </a>
+  <div class="export-wrap" id="export-wrap" hidden>
+    <button class="btn" id="export-btn">Export <svg width="10" height="10" viewBox="0 0 10 10"><path d="M1 3l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></button>
+    <div class="export-menu" id="export-menu" hidden>
+      <button id="exp-dash">Dashboard image (PNG)</button>
+      <button id="exp-charts">Each chart as PNG</button>
+      <button id="exp-pptx">PowerPoint (.pptx) <span class="tag" id="pptx-pro-tag">PRO</span></button>
+    </div>
+  </div>
+  <button class="btn" id="new-btn" hidden>New file</button>
+  <button class="btn btn-primary" id="upgrade-btn">Upgrade<span class="upgrade-price"> — $5/mo</span></button>
+  <button class="pro-badge" id="pro-badge" hidden>PRO</button>
+  <button id="theme-btn" title="Switch light / dark" aria-label="Switch color theme">☾</button>
+</header>
+
+<main>
+  <section id="drop-screen">
+    <h1>Drop your data.<br>Get a dashboard.</h1>
+    <p class="sub">VizDrop turns Excel, CSV, and JSON files into a clean, presentation-ready dashboard in seconds. No formulas, no chart wizards, nothing to learn.</p>
+
+    <div class="dropzone" id="dropzone" role="button" tabindex="0" aria-label="Upload a data file">
+      <div class="dz-icon">
+        <svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 16V4m0 0L7 9m5-5 5 5"/><path d="M4 16v3a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-3"/></svg>
+      </div>
+      <strong>Drag &amp; drop your file here</strong>
+      <span class="browse">or click to browse</span>
+      <span class="formats">Excel (.xlsx, .xls) · CSV · TSV · JSON</span>
+    </div>
+
+    <div class="sample-row">
+      <button class="btn" id="sample-btn">✨ No file handy? Try sample data</button>
+    </div>
+
+    <p class="privacy">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="4" y="10" width="16" height="10" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg>
+      Your file never leaves your device — everything happens right here in your browser.
+    </p>
+  </section>
+
+  <section id="dash-screen" hidden>
+    <div class="dash-meta">
+      <h1 id="dash-title" spellcheck="false">My dashboard</h1>
+      <div id="dash-subtitle"></div>
+      <select id="sheet-select" hidden></select>
+    </div>
+
+    <div class="banner" id="limit-banner" hidden>
+      <span id="limit-text"></span>
+      <button class="btn btn-small btn-primary" id="limit-upgrade">Upgrade</button>
+    </div>
+
+    <div class="kpis" id="kpis"></div>
+    <div class="charts-grid" id="charts"></div>
+
+    <section class="card preview-card">
+      <h3 id="preview-title">Data preview</h3>
+      <div id="preview-body"></div>
+    </section>
+
+    <p class="foot-note">Made with <a href="index.html">VizDrop</a> · Your data stays in your browser.</p>
+  </section>
+</main>
+
+<div class="modal-backdrop" id="upgrade-modal" hidden>
+  <div class="modal" role="dialog" aria-modal="true" aria-label="Upgrade to VizDrop Pro">
+    <button class="icon-btn modal-close" id="modal-close" aria-label="Close">✕</button>
+    <h2>VizDrop Pro</h2>
+    <div class="price">$5<small>/month · cancel anytime</small></div>
+    <ul>
+      <li>Unlimited rows (free plan: first 5,000)</li>
+      <li>No watermark on exports</li>
+      <li>PowerPoint (.pptx) export — one chart per slide</li>
+      <li>Extra-sharp 3× resolution images</li>
+    </ul>
+    <a class="btn btn-primary" id="checkout-link" href="#" target="_blank" rel="noopener">Get Pro →</a>
+    <div class="divider">already have a license key?</div>
+    <div class="license-row">
+      <input type="text" id="license-input" placeholder="Paste your license key" spellcheck="false" autocomplete="off">
+      <button class="btn" id="activate-btn">Activate</button>
+    </div>
+    <p class="err-text" id="license-error"></p>
+    <div id="deactivate-row" hidden>Pro is active on this browser. <button id="deactivate-btn">Remove license</button></div>
+  </div>
+</div>
+
+<div class="busy" id="busy" hidden>
+  <div class="spinner"></div>
+  <div id="busy-text">Reading your file…</div>
+</div>
+
+<div class="toast" id="toast"></div>
+<input type="file" id="file-input" hidden accept=".xlsx,.xls,.xlsm,.xlsb,.ods,.csv,.tsv,.txt,.json">
+
+<script type="module" src="assets/js/app.js"></script>
+</body>
+</html>
