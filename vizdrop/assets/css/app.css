@@ -43,18 +43,6 @@
 @media (max-width: 640px) {
   .topbar { padding: 8px 12px; gap: 6px; }
   .topbar .btn { padding: 6px 10px; font-size: 13px; }
-  .upgrade-price { display: none; }
-}
-
-.pro-badge {
-  border: none;
-  background: linear-gradient(120deg, #2a78d6, #4a3aa7);
-  color: #fff;
-  font-size: 11.5px;
-  font-weight: 700;
-  letter-spacing: 0.06em;
-  border-radius: 999px;
-  padding: 5px 12px;
 }
 
 main { max-width: 1160px; margin: 0 auto; padding: 24px 20px 80px; }
@@ -115,20 +103,6 @@ select, input[type="text"] {
   border-radius: 8px;
   padding: 6px 10px;
 }
-
-.banner {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  background: var(--wash);
-  border: 1px solid var(--border);
-  border-radius: 12px;
-  padding: 10px 16px;
-  margin: 12px 0;
-  font-size: 13.5px;
-  color: var(--ink2);
-}
-.banner button { margin-left: auto; white-space: nowrap; }
 
 .kpis {
   display: grid;
@@ -273,52 +247,6 @@ select, input[type="text"] {
   font-size: 14px;
 }
 .export-menu button:hover { background: var(--wash); }
-.tag {
-  margin-left: auto;
-  font-size: 10px;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  color: var(--accent);
-  border: 1px solid var(--accent);
-  border-radius: 999px;
-  padding: 1px 7px;
-}
-
-/* Modal */
-.modal-backdrop {
-  position: fixed;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.45);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 20px;
-  z-index: 50;
-}
-.modal {
-  width: 100%;
-  max-width: 420px;
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: 18px;
-  box-shadow: var(--shadow-lg);
-  padding: 26px 26px 22px;
-  position: relative;
-}
-.modal h2 { font-size: 20px; }
-.modal .price { font-size: 34px; font-weight: 700; margin: 8px 0 2px; }
-.modal .price small { font-size: 14px; font-weight: 500; color: var(--muted); }
-.modal ul { margin: 12px 0 18px; padding: 0; list-style: none; color: var(--ink2); font-size: 14px; }
-.modal li { padding: 4px 0 4px 26px; position: relative; }
-.modal li::before { content: "✓"; position: absolute; left: 4px; color: var(--good); font-weight: 700; }
-.modal-close { position: absolute; top: 14px; right: 14px; }
-.modal .divider { display: flex; align-items: center; gap: 10px; color: var(--muted); font-size: 12px; margin: 18px 0 10px; }
-.modal .divider::before, .modal .divider::after { content: ""; flex: 1; height: 1px; background: var(--grid); }
-.license-row { display: flex; gap: 8px; }
-.license-row input { flex: 1; min-width: 0; }
-.err-text { color: var(--danger); font-size: 13px; min-height: 18px; margin: 8px 0 0; }
-#deactivate-row { margin-top: 10px; font-size: 12.5px; color: var(--muted); }
-#deactivate-row button { background: none; border: none; color: var(--muted); text-decoration: underline; padding: 0; }
 
 /* Busy + toast */
 .busy {
@@ -360,8 +288,9 @@ select, input[type="text"] {
   z-index: 70;
   max-width: min(90vw, 480px);
 }
-.toast.show { opacity: 1; transform: translate(-50%, 0); }
+.toast.show { opacity: 1; transform: translate(-50%, 0); pointer-events: auto; }
 .toast.err { background: var(--danger); color: #fff; }
+.toast a { color: inherit; text-decoration: underline; }
 
 .foot-note { text-align: center; color: var(--muted); font-size: 12.5px; margin-top: 40px; }
 .foot-note a { color: var(--muted); }

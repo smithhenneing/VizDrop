@@ -2,12 +2,17 @@
 const { test, expect } = require('@playwright/test');
 
 test.describe('landing page', () => {
-  test('loads with pricing and CTAs', async ({ page }) => {
+  test('loads with free-forever message and CTAs', async ({ page }) => {
     await page.goto('/');
     await expect(page).toHaveTitle(/VizDrop/);
     await expect(page.locator('.hero h1')).toContainText('Drop your spreadsheet');
-    await expect(page.locator('.plan.pro .price')).toContainText('$5');
+    await expect(page.locator('#support h2')).toContainText('Free. Forever.');
     await expect(page.locator('a[href="app.html"]').first()).toBeVisible();
+    // donate buttons stay hidden until a real DONATE_URL is configured
+    const donateConfigured = await page.evaluate(async () => (await import('./assets/js/config.js')).donateConfigured());
+    for (const el of await page.locator('[data-donate]').all()) {
+      donateConfigured ? await expect(el).toBeVisible() : await expect(el).toBeHidden();
+    }
   });
 });
 
@@ -46,24 +51,17 @@ test.describe('app', () => {
     await expect(card.locator('.chart-body table')).toBeVisible();
   });
 
-  test('license: dev key activates and removes Pro gates', async ({ page }) => {
+  test('nothing is gated: large file keeps all rows, pptx has no PRO tag', async ({ page }) => {
     await page.goto('/app.html');
-    const result = await page.evaluate(async () => {
-      const L = await import('./assets/js/license.js');
-      await L.activate('VIZDROP-DEV-PLAYWRIGHT');
-      const pro = L.isPro();
-      L.deactivate();
-      return { pro, after: L.isPro() };
+    const rowCount = await page.evaluate(async () => {
+      const P = await import('./assets/js/parse.js');
+      let csv = 'N,V\n';
+      for (let i = 0; i < 6000; i++) csv += `${i},${i * 2}\n`;
+      const parsed = await P.parseFile(new File([csv], 'big.csv'));
+      return P.gridToTable(parsed.sheets[0].grid).rows.length;
     });
-    expect(result.pro).toBe(true);
-    expect(result.after).toBe(false);
-  });
-
-  test('escape closes the upgrade modal', async ({ page }) => {
-    await page.goto('/app.html#upgrade');
-    await expect(page.locator('#upgrade-modal')).toBeVisible();
-    await page.keyboard.press('Escape');
-    await expect(page.locator('#upgrade-modal')).toBeHidden();
+    expect(rowCount).toBe(6000);
+    await expect(page.locator('#exp-pptx .tag')).toHaveCount(0);
   });
 });
 
@@ -124,7 +122,7 @@ test.describe('exports', () => {
     const out = await page.evaluate(async () => {
       const E = await import('./assets/js/export.js');
       const dbg = window.VizDropDebug;
-      const canvas = await E.buildDashboardCanvas(dbg.state, dbg.makeOpts, { watermark: true, scale: 2 });
+      const canvas = await E.buildDashboardCanvas(dbg.state, dbg.makeOpts, { scale: 2 });
       return { w: canvas.width, h: canvas.height };
     });
     expect(out.w).toBe(2480);

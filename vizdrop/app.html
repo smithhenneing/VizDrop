@@ -38,12 +38,11 @@
     <div class="export-menu" id="export-menu" hidden>
       <button id="exp-dash">Dashboard image (PNG)</button>
       <button id="exp-charts">Each chart as PNG</button>
-      <button id="exp-pptx">PowerPoint (.pptx) <span class="tag" id="pptx-pro-tag">PRO</span></button>
+      <button id="exp-pptx">PowerPoint (.pptx)</button>
     </div>
   </div>
   <button class="btn" id="new-btn" hidden>New file</button>
-  <button class="btn btn-primary" id="upgrade-btn">Upgrade<span class="upgrade-price"> — $5/mo</span></button>
-  <button class="pro-badge" id="pro-badge" hidden>PRO</button>
+  <a class="btn" id="donate-btn" href="#" target="_blank" rel="noopener" hidden>♥ Support</a>
   <button id="theme-btn" title="Switch light / dark" aria-label="Switch color theme">☾</button>
 </header>
 
@@ -78,11 +77,6 @@
       <select id="sheet-select" hidden></select>
     </div>
 
-    <div class="banner" id="limit-banner" hidden>
-      <span id="limit-text"></span>
-      <button class="btn btn-small btn-primary" id="limit-upgrade">Upgrade</button>
-    </div>
-
     <div class="kpis" id="kpis"></div>
     <div class="charts-grid" id="charts"></div>
 
@@ -91,31 +85,9 @@
       <div id="preview-body"></div>
     </section>
 
-    <p class="foot-note">Made with <a href="index.html">VizDrop</a> · Your data stays in your browser.</p>
+    <p class="foot-note">Made with <a href="index.html">VizDrop</a> · Your data stays in your browser.<span hidden> · <a id="foot-donate" href="#" target="_blank" rel="noopener">Help keep VizDrop free ♥</a></span></p>
   </section>
 </main>
-
-<div class="modal-backdrop" id="upgrade-modal" hidden>
-  <div class="modal" role="dialog" aria-modal="true" aria-label="Upgrade to VizDrop Pro">
-    <button class="icon-btn modal-close" id="modal-close" aria-label="Close">✕</button>
-    <h2>VizDrop Pro</h2>
-    <div class="price">$5<small>/month · cancel anytime</small></div>
-    <ul>
-      <li>Unlimited rows (free plan: first 5,000)</li>
-      <li>No watermark on exports</li>
-      <li>PowerPoint (.pptx) export — one chart per slide</li>
-      <li>Extra-sharp 3× resolution images</li>
-    </ul>
-    <a class="btn btn-primary" id="checkout-link" href="#" target="_blank" rel="noopener">Get Pro →</a>
-    <div class="divider">already have a license key?</div>
-    <div class="license-row">
-      <input type="text" id="license-input" placeholder="Paste your license key" spellcheck="false" autocomplete="off">
-      <button class="btn" id="activate-btn">Activate</button>
-    </div>
-    <p class="err-text" id="license-error"></p>
-    <div id="deactivate-row" hidden>Pro is active on this browser. <button id="deactivate-btn">Remove license</button></div>
-  </div>
-</div>
 
 <div class="busy" id="busy" hidden>
   <div class="spinner"></div>

@@ -5,7 +5,8 @@ import { renderChart, THEMES, FONT } from './charts.js';
 import { prepareChart } from './auto.js';
 
 const NS = 'http://www.w3.org/2000/svg';
-const WATERMARK = 'Made with VizDrop';
+// small credit on exports — VizDrop is free; this is how new people find it
+const WATERMARK = 'Made with VizDrop · vizdrop.netlify.app';
 
 function E(tag, attrs = {}, parent = null) {
   const n = document.createElementNS(NS, tag);
@@ -16,7 +17,7 @@ function E(tag, attrs = {}, parent = null) {
 function T(parent, str, attrs) { const t = E('text', attrs, parent); t.textContent = str; return t; }
 
 // Build a standalone, share-ready SVG card for one chart (title + chart + chrome).
-export function buildExportSvg(chart, profile, makeOpts, { width = 640, watermark = false } = {}) {
+export function buildExportSvg(chart, profile, makeOpts, { width = 640, watermark = true } = {}) {
   const th = THEMES.light;
   const prep = prepareChart(chart, profile);
   if (!prep) return null;
@@ -85,7 +86,7 @@ const rr = (c, x, y, w, h, r) => {
 };
 
 // Full dashboard PNG: header + KPI tiles + all charts in a 2-col grid.
-export async function buildDashboardCanvas(state, makeOpts, { watermark = false, scale = 2 } = {}) {
+export async function buildDashboardCanvas(state, makeOpts, { watermark = true, scale = 2 } = {}) {
   const th = THEMES.light;
   const W = 1240, pad = 32, gap = 20;
   const colW = (W - pad * 2 - gap) / 2;
@@ -192,6 +193,7 @@ export async function exportPptx(state, makeOpts) {
   title.addText(new Date().toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' }), {
     x: 0.8, y: 6.6, w: 6, h: 0.4, fontSize: 12, color: MUTED, fontFace: 'Segoe UI',
   });
+  title.addText(WATERMARK, { x: 7.5, y: 6.6, w: 5, h: 0.4, fontSize: 11, color: MUTED, fontFace: 'Segoe UI', align: 'right' });
 
   if ((state.kpiValues || []).length) {
     const s = pptx.addSlide();

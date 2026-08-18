@@ -1,8 +1,11 @@
 # VizDrop — drop a spreadsheet, get a dashboard
 
-A micro-SaaS that turns raw business data (Excel, CSV, TSV, JSON) into a beautiful,
-presentation-ready dashboard — entirely in the visitor's browser. Free tier +
-Pro tier at **$5/month** via Lemon Squeezy license keys.
+A web app that turns raw business data (Excel, CSV, TSV, JSON) into a beautiful,
+presentation-ready dashboard — entirely in the visitor's browser. **Free forever**
+(every feature, no account, no limits), sustained by an optional donation link:
+*"If VizDrop saved you time, you can help keep it free."*
+
+Live at **https://vizdrop.netlify.app** (auto-deploys from `main`).
 
 **The whole product lives in [`vizdrop/`](vizdrop/). That folder is the deployable
 website.** No build step, no server, no database — hosting costs $0.
@@ -30,7 +33,7 @@ button works from `file://` too.
 | `vizdrop/assets/js/auto.js` | Auto-dashboard heuristics (which KPIs, which charts) + aggregation |
 | `vizdrop/assets/js/charts.js` | Hand-rolled SVG chart renderer (line, area, column, bar, donut, scatter, histogram) with tooltips, crosshairs, dark mode |
 | `vizdrop/assets/js/export.js` | PNG export (per-chart + full dashboard) and PowerPoint export (Pro) |
-| `vizdrop/assets/js/license.js` | Free/Pro gating + Lemon Squeezy license validation. **Config lives here.** |
+| `vizdrop/assets/js/config.js` | **The one config value**: the donation link (`DONATE_URL`). Support buttons stay hidden until it's set. |
 | `vizdrop/assets/js/app.js` | App shell: state, UI, edit menus, upgrade modal |
 | `tools/server.ps1` | Local dev server (also has a dev-only `/__save` capture endpoint — never deployed) |
 
@@ -50,39 +53,32 @@ npx playwright install chromium
 npm test
 ```
 
-## Free vs Pro
+## Business model: free + donations
 
-| | Free | Pro ($5/mo) |
-|---|---|---|
-| All chart types, editing, dark mode | ✓ | ✓ |
-| Rows per file | first 5,000 | unlimited |
-| PNG exports | ✓ (small watermark) | no watermark, 3× resolution |
-| PowerPoint (.pptx) export | — | ✓ |
-
-Limits are set in `license.js` (`FREE_ROW_LIMIT`) and the watermark text in `export.js`.
+Everything is free and ungated. Exports carry a small "Made with VizDrop ·
+vizdrop.netlify.app" credit line (`WATERMARK` in `export.js`) — it's marketing,
+not a paywall, and every shared chart advertises the site. After an export the
+app shows a gentle toast: *"If VizDrop saved you time, you can help keep it
+free ♥"* linking to the donation page.
 
 ---
 
 ## Launch checklist
 
-### 1. Set up payments (Lemon Squeezy — works for Indonesian sellers)
+### 1. Set up the donation link
 
-Lemon Squeezy is a *merchant of record*: they handle global payments, VAT/tax,
-and payouts to you. Stripe doesn't directly support Indonesian accounts; this is
-the standard route.
+Any payment/donation page works — the app just opens a URL. Good options for an
+Indonesian creator:
 
-1. Create an account at lemonsqueezy.com and create a store.
-2. Create a **Subscription** product: $5/month. In the product's settings enable
-   **License keys**.
-3. Copy the product's **checkout link** (looks like
-   `https://YOURSTORE.lemonsqueezy.com/buy/xxxxxxxx-xxxx-...`).
-4. Paste it in **one place**: `vizdrop/assets/js/license.js` → `CHECKOUT_URL`.
-5. Done. When a customer pays, Lemon Squeezy emails them a license key; they paste
-   it into the app's Upgrade dialog, and the app validates it against Lemon
-   Squeezy's public license API (no server of yours involved).
+- **Lemon Squeezy** (works globally, merchant of record): create a product with
+  the **"Pay what you want"** pricing type, e.g. suggested $5 / minimum $1, one-time.
+  Copy its checkout link.
+- **Ko-fi / Buy Me a Coffee**: simplest to set up, made for exactly this.
+- **Saweria / Trakteer**: Indonesian platforms with QRIS/GoPay — best if most
+  supporters are local.
 
-Testing without paying: any key starting with `VIZDROP-DEV-` activates Pro locally.
-Remove that prefix check in `license.js` before launch if you don't want it.
+Paste the link in **one place**: `vizdrop/assets/js/config.js` → `DONATE_URL`.
+Until it's set, all Support buttons stay hidden automatically.
 
 ### 2. Deploy (pick one — all free)
 
@@ -122,8 +118,8 @@ After the first deploy:
 - **Hand-rolled SVG charts** instead of a chart library: exact control over the
   design (thin marks, rounded data-ends, hairline grids, validated colorblind-safe
   palette in both light and dark mode) — output looks designed, not default.
-- **Lemon Squeezy license keys** instead of accounts/auth: no backend, no user
-  database, no password resets. One config value to go live.
+- **Donations instead of subscriptions**: no accounts, no license servers, no
+  billing support burden. One config value (`DONATE_URL`) to go live.
 
 ## Ideas for later
 

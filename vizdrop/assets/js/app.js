@@ -6,13 +6,13 @@ import { buildDashboard, prepareChart, addChartDefaults, colByName } from './aut
 import { renderChart, THEMES, tooltip } from './charts.js';
 import { fmtValue, fmtTick, fmtBucket, truncate } from './format.js';
 import { buildExportSvg, svgToCanvas, downloadCanvas, buildDashboardCanvas, exportPptx } from './export.js';
-import { isPro, activate, deactivate, revalidate, CHECKOUT_URL, FREE_ROW_LIMIT } from './license.js';
+import { DONATE_URL, donateConfigured } from './config.js';
 
 const $ = (sel) => document.querySelector(sel);
 
 const state = {
   fileName: '', parsed: null, sheetIdx: 0,
-  table: null, profile: null, truncatedFrom: 0,
+  table: null, profile: null,
   title: 'My dashboard', subtitle: '',
   kpis: [], kpiValues: [], charts: [],
   theme: localStorage.getItem('vizdrop.theme') || (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'),
@@ -70,11 +70,6 @@ async function handleFile(file) {
 function buildFromSheet() {
   const sheet = state.parsed.sheets[state.sheetIdx];
   const table = gridToTable(sheet.grid);
-  state.truncatedFrom = 0;
-  if (!isPro() && table.rows.length > FREE_ROW_LIMIT) {
-    state.truncatedFrom = table.rows.length;
-    table.rows = table.rows.slice(0, FREE_ROW_LIMIT);
-  }
   state.table = table;
   state.profile = profileTable(table);
   const dash = buildDashboard(state.profile);
@@ -110,15 +105,6 @@ function renderDashboard() {
     sheetSel.hidden = true;
   }
 
-  const banner = $('#limit-banner');
-  if (state.truncatedFrom) {
-    banner.hidden = false;
-    $('#limit-text').textContent =
-      `Free plan uses the first ${FREE_ROW_LIMIT.toLocaleString('en-US')} rows — this file has ${state.truncatedFrom.toLocaleString('en-US')}.`;
-  } else {
-    banner.hidden = true;
-  }
-
   renderKpis();
 
   const grid = $('#charts');
@@ -142,7 +128,6 @@ function renderDashboard() {
   grid.appendChild(add);
 
   renderPreviewTable();
-  updateProUi();
 }
 
 function renderKpis() {
@@ -238,10 +223,11 @@ function makeCard(chart) {
   });
   dlBtn.addEventListener('click', async () => {
     try {
-      const svg = buildExportSvg(chart, state.profile, makeOpts, { width: 640, watermark: !isPro() });
+      const svg = buildExportSvg(chart, state.profile, makeOpts, { width: 640 });
       if (!svg) return toast('This chart has no data to export yet.', true);
-      const canvas = await svgToCanvas(svg, isPro() ? 3 : 2);
+      const canvas = await svgToCanvas(svg, 3);
       downloadCanvas(canvas, slug(chart.title) + '.png');
+      supportNudge();
     } catch (e) { toast('Export failed: ' + e.message, true); }
   });
   return el;
@@ -458,57 +444,67 @@ function cellText(raw, coerced, col) {
 async function doDashboardPng() {
   try {
     showBusy(true, 'Building your image…');
-    const canvas = await buildDashboardCanvas(state, makeOpts, { watermark: !isPro(), scale: isPro() ? 3 : 2 });
+    const canvas = await buildDashboardCanvas(state, makeOpts, { scale: 2 });
     downloadCanvas(canvas, slug(state.title) + '.png');
+    supportNudge();
   } catch (e) { toast('Export failed: ' + e.message, true); }
   finally { showBusy(false); }
 }
 
 async function doAllChartsPng() {
   for (const chart of state.charts) {
-    const svg = buildExportSvg(chart, state.profile, makeOpts, { width: 640, watermark: !isPro() });
+    const svg = buildExportSvg(chart, state.profile, makeOpts, { width: 640 });
     if (!svg) continue;
-    const canvas = await svgToCanvas(svg, isPro() ? 3 : 2);
+    const canvas = await svgToCanvas(svg, 3);
     downloadCanvas(canvas, slug(chart.title) + '.png');
     await new Promise((r) => setTimeout(r, 450));
   }
+  supportNudge();
 }
 
 async function doPptx() {
-  if (!isPro()) return openUpgrade();
   try {
     showBusy(true, 'Building your slides…');
     await exportPptx(state, makeOpts);
+    supportNudge();
   } catch (e) { toast('Export failed: ' + e.message, true); }
   finally { showBusy(false); }
 }
 
-// ---- pro / upgrade ----
+// ---- support / donations ----
 
-function updateProUi() {
-  const pro = isPro();
-  $('#upgrade-btn').hidden = pro;
-  $('#pro-badge').hidden = !pro;
-  $('#pptx-pro-tag').hidden = pro;
+function supportNudge() {
+  if (!donateConfigured()) return;
+  toast('Export ready! If VizDrop saved you time, you can help keep it free ♥', false, DONATE_URL);
 }
 
-function openUpgrade() {
-  $('#upgrade-modal').hidden = false;
-  $('#license-error').textContent = '';
-  $('#checkout-link').href = CHECKOUT_URL;
-  $('#deactivate-row').hidden = !isPro();
+function setupDonateUi() {
+  if (!donateConfigured()) return;
+  const btn = $('#donate-btn');
+  btn.href = DONATE_URL;
+  btn.hidden = false;
+  const foot = $('#foot-donate');
+  if (foot) { foot.href = DONATE_URL; foot.parentElement.hidden = false; }
 }
-
-function closeUpgrade() { $('#upgrade-modal').hidden = true; }
 
 // ---- misc ui ----
 
-function toast(msg, isError = false) {
+function toast(msg, isError = false, href = null) {
   const t = $('#toast');
-  t.textContent = msg;
+  t.textContent = '';
+  if (href) {
+    const a = document.createElement('a');
+    a.href = href;
+    a.target = '_blank';
+    a.rel = 'noopener';
+    a.textContent = msg;
+    t.appendChild(a);
+  } else {
+    t.textContent = msg;
+  }
   t.className = 'toast show' + (isError ? ' err' : '');
   clearTimeout(toast._t);
-  toast._t = setTimeout(() => { t.className = 'toast'; }, 4200);
+  toast._t = setTimeout(() => { t.className = 'toast'; }, href ? 7000 : 4200);
 }
 
 function showBusy(on, msg) {
@@ -540,7 +536,7 @@ function resetToDrop() {
 
 function init() {
   applyTheme();
-  revalidate().then(updateProUi);
+  setupDonateUi();
 
   $('#theme-btn').addEventListener('click', () => {
     state.theme = state.theme === 'dark' ? 'light' : 'dark';
@@ -599,43 +595,10 @@ function init() {
   $('#exp-charts').addEventListener('click', () => { menu.hidden = true; doAllChartsPng(); });
   $('#exp-pptx').addEventListener('click', () => { menu.hidden = true; doPptx(); });
 
-  // upgrade modal
-  $('#upgrade-btn').addEventListener('click', openUpgrade);
-  $('#pro-badge').addEventListener('click', openUpgrade);
-  $('#limit-upgrade').addEventListener('click', openUpgrade);
-  $('#modal-close').addEventListener('click', closeUpgrade);
-  $('#upgrade-modal').addEventListener('click', (e) => { if (e.target === e.currentTarget) closeUpgrade(); });
-  $('#activate-btn').addEventListener('click', async () => {
-    const btn = $('#activate-btn');
-    btn.disabled = true;
-    $('#license-error').textContent = '';
-    try {
-      await activate($('#license-input').value);
-      updateProUi();
-      closeUpgrade();
-      toast('Pro activated — welcome aboard! 🎉');
-      if (state.parsed) buildFromSheet(); // re-apply row limits
-    } catch (err) {
-      $('#license-error').textContent = err.message;
-    } finally {
-      btn.disabled = false;
-    }
-  });
-  $('#deactivate-btn').addEventListener('click', () => {
-    deactivate();
-    updateProUi();
-    closeUpgrade();
-    toast('License removed from this browser.');
-  });
-
   document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape') {
-      closeUpgrade();
-      $('#export-menu').hidden = true;
-    }
+    if (e.key === 'Escape') $('#export-menu').hidden = true;
   });
 
-  if (location.hash === '#upgrade') openUpgrade();
   if (new URLSearchParams(location.search).has('demo')) $('#sample-btn').click();
 
   // responsive re-render

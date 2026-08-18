@@ -32,7 +32,7 @@
   </a>
   <div class="links">
     <a href="#how">How it works</a>
-    <a href="#pricing">Pricing</a>
+    <a href="#support">Free forever</a>
     <a href="#faq">FAQ</a>
     <a class="btn btn-primary" href="app.html">Open the app</a>
   </div>
@@ -174,33 +174,30 @@
   </div>
 </section>
 
-<section class="block wrap" id="pricing">
-  <h2>Simple, honest pricing</h2>
-  <p class="block-sub">Start free. Upgrade when it earns its keep.</p>
+<section class="block wrap" id="support">
+  <h2>Free. Forever.</h2>
+  <p class="block-sub">Every feature, for everyone — no account, no limits, no catch.</p>
   <div class="pricing">
     <div class="card plan">
-      <h3>Free</h3>
+      <h3>Everything included</h3>
       <div class="price">$0<small> forever</small></div>
       <ul>
         <li>All chart types &amp; smart dashboards</li>
-        <li>Excel, CSV, TSV &amp; JSON files</li>
-        <li>PNG exports (small watermark)</li>
-        <li>First 5,000 rows per file</li>
-      </ul>
-      <a class="btn" href="app.html">Start free</a>
-    </div>
-    <div class="card plan pro">
-      <span class="flag">MOST POPULAR</span>
-      <h3>Pro</h3>
-      <div class="price">$5<small>/month · cancel anytime</small></div>
-      <ul>
-        <li>Everything in Free</li>
         <li>Unlimited rows</li>
-        <li>No watermark on exports</li>
-        <li>PowerPoint (.pptx) export</li>
-        <li>Extra-sharp 3× resolution images</li>
+        <li>Excel, CSV, TSV &amp; JSON files</li>
+        <li>Sharp PNG &amp; PowerPoint (.pptx) exports</li>
+        <li>Your data never leaves your browser</li>
       </ul>
-      <a class="btn btn-primary" href="app.html#upgrade">Get Pro →</a>
+      <a class="btn btn-primary" href="app.html">Open VizDrop →</a>
+    </div>
+    <div class="card plan">
+      <h3>♥ Keep VizDrop free</h3>
+      <p style="color: var(--ink2); font-size: 14.5px; margin: 14px 0 18px;">
+        VizDrop is built and run by one person. If it saved you time, you can
+        help keep it free for everyone — chip in whatever feels right. No
+        pressure, no paywall, ever.
+      </p>
+      <a class="btn" data-donate hidden href="#" target="_blank" rel="noopener">Support VizDrop ♥</a>
     </div>
   </div>
 </section>
@@ -221,12 +218,8 @@
       <p>No. Drop a file and VizDrop builds the dashboard for you. If you want to tweak, every chart has a simple edit menu — change the type, fields, or colors with two clicks.</p>
     </details>
     <details>
-      <summary>How do I get Pro after paying?</summary>
-      <p>You’ll receive a license key by email right after checkout. Paste it into the app once and Pro stays active on that browser.</p>
-    </details>
-    <details>
-      <summary>Can I cancel anytime?</summary>
-      <p>Yes — it’s a monthly subscription with no lock-in. Cancel in one click from your receipt email and you won’t be billed again.</p>
+      <summary>Is VizDrop really free?</summary>
+      <p>Yes — free forever, with every feature included and no account needed. It’s kept alive by donations: if VizDrop saved you time, you can chip in whatever feels right, but you never have to.</p>
     </details>
   </div>
 </section>
@@ -238,7 +231,17 @@
 
 <footer>
   © 2026 VizDrop · <a href="app.html">Open the app</a> · Your data stays in your browser
+  · <a data-donate hidden href="#" target="_blank" rel="noopener">Help keep VizDrop free ♥</a>
 </footer>
 
+<script type="module">
+  import { DONATE_URL, donateConfigured } from './assets/js/config.js';
+  if (donateConfigured()) {
+    for (const el of document.querySelectorAll('[data-donate]')) {
+      el.href = DONATE_URL;
+      el.hidden = false;
+    }
+  }
+</script>
 </body>
 </html>
