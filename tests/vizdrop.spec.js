@@ -1,18 +1,26 @@
-// @ts-check
+﻿// @ts-check
 const { test, expect } = require('@playwright/test');
 
-test.describe('landing page', () => {
-  test('loads with free-forever message and CTAs', async ({ page }) => {
+test.describe('home = the tool', () => {
+  test('lands straight on the dropzone, no marketing scroll', async ({ page }) => {
     await page.goto('/');
     await expect(page).toHaveTitle(/VizDrop/);
-    await expect(page.locator('.hero h1')).toContainText('Drop your spreadsheet');
-    await expect(page.locator('#support h2')).toContainText('Free. Forever.');
-    await expect(page.locator('a[href="app.html"]').first()).toBeVisible();
-    // donate buttons stay hidden until a real DONATE_URL is configured
-    const donateConfigured = await page.evaluate(async () => (await import('./assets/js/config.js')).donateConfigured());
-    for (const el of await page.locator('[data-donate]').all()) {
-      donateConfigured ? await expect(el).toBeVisible() : await expect(el).toBeHidden();
-    }
+    // the tool is usable immediately, above the fold
+    const dz = page.locator('#dropzone');
+    await expect(dz).toBeVisible();
+    await expect(dz).toBeInViewport();
+    await expect(page.locator('#sample-btn')).toBeVisible();
+    // the whole page is short - utility first, not a landing page
+    const height = await page.evaluate(() => document.body.scrollHeight);
+    expect(height).toBeLessThan(1100);
+    // support link is present but never gates anything
+    await expect(page.locator('#donate-btn')).toBeVisible();
+  });
+
+  test('old /app.html links still reach the app', async ({ page }) => {
+    await page.goto('/app.html?demo=1');
+    await expect(page).not.toHaveURL(/app\.html/);
+    await expect(page.locator('#dash-screen')).toBeVisible({ timeout: 10000 });
   });
 });
 
@@ -20,7 +28,7 @@ test.describe('app', () => {
   test('demo link builds a full dashboard', async ({ page }) => {
     const errors = [];
     page.on('pageerror', (e) => errors.push(e.message));
-    await page.goto('/app.html?demo=1');
+    await page.goto('/?demo=1');
 
     await expect(page.locator('#dash-screen')).toBeVisible({ timeout: 10000 });
     await expect(page.locator('#charts .chart-body svg')).toHaveCount(6);
@@ -34,7 +42,7 @@ test.describe('app', () => {
   });
 
   test('chart config can switch type and field', async ({ page }) => {
-    await page.goto('/app.html?demo=1');
+    await page.goto('/?demo=1');
     await expect(page.locator('#charts .chart-body svg')).toHaveCount(6, { timeout: 10000 });
     const card = page.locator('.chart-card').first();
     await card.locator('button[title="Edit this chart"]').click();
@@ -44,7 +52,7 @@ test.describe('app', () => {
   });
 
   test('table view toggle shows aggregated data', async ({ page }) => {
-    await page.goto('/app.html?demo=1');
+    await page.goto('/?demo=1');
     await expect(page.locator('#charts .chart-body svg')).toHaveCount(6, { timeout: 10000 });
     const card = page.locator('.chart-card').nth(1);
     await card.locator('button[title="Toggle table view"]').click();
@@ -52,7 +60,7 @@ test.describe('app', () => {
   });
 
   test('nothing is gated: large file keeps all rows, pptx has no PRO tag', async ({ page }) => {
-    await page.goto('/app.html');
+    await page.goto('/');
     const rowCount = await page.evaluate(async () => {
       const P = await import('./assets/js/parse.js');
       let csv = 'N,V\n';
@@ -67,7 +75,7 @@ test.describe('app', () => {
 
 test.describe('parsing engine', () => {
   test('handles messy Indonesian CSV, JSON, EU decimals, xlsx round-trip', async ({ page }) => {
-    await page.goto('/app.html');
+    await page.goto('/');
     const out = await page.evaluate(async () => {
       const P = await import('./assets/js/parse.js');
       const PR = await import('./assets/js/profile.js');
@@ -117,7 +125,7 @@ test.describe('parsing engine', () => {
 
 test.describe('exports', () => {
   test('dashboard PNG canvas composes at 2x with watermark', async ({ page }) => {
-    await page.goto('/app.html?demo=1');
+    await page.goto('/?demo=1');
     await expect(page.locator('#charts .chart-body svg')).toHaveCount(6, { timeout: 10000 });
     const out = await page.evaluate(async () => {
       const E = await import('./assets/js/export.js');
@@ -129,3 +137,4 @@ test.describe('exports', () => {
     expect(out.h).toBeGreaterThan(2000);
   });
 });
+

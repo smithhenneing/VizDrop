@@ -90,6 +90,9 @@ function renderDashboard() {
   $('#dash-title').textContent = state.title;
   $('#dash-subtitle').textContent = state.subtitle;
 
+  $('#file-chip-name').textContent = state.fileName;
+  $('#file-chip').hidden = false;
+
   const sheetSel = $('#sheet-select');
   if (state.parsed.sheets.length > 1) {
     sheetSel.hidden = false;
@@ -529,6 +532,8 @@ function resetToDrop() {
   $('#dash-screen').hidden = true;
   $('#export-wrap').hidden = true;
   $('#new-btn').hidden = true;
+  $('#file-chip').hidden = true;
+  $('#sheet-select').hidden = true;
   $('#drop-screen').hidden = false;
 }
 

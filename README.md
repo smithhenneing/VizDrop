@@ -18,16 +18,25 @@ website.** No build step, no server, no database — hosting costs $0.
 powershell -NoProfile -ExecutionPolicy Bypass -File tools/server.ps1 -Port 8321
 ```
 
-Then open http://localhost:8321 (landing page) / http://localhost:8321/app.html (the app).
-Or just double-click `vizdrop/index.html` — everything except the "Try sample data"
-button works from `file://` too.
+Then open http://localhost:8321 — that's the whole app. Add `?demo=1` to load the
+sample dashboard instantly. (Double-clicking `vizdrop/index.html` also works from
+`file://`, except the "Try sample data" button.)
+
+## Design principle: utility first
+
+The tool *is* the home page. A visitor lands on the dropzone and can use VizDrop
+without scrolling or clicking through anything — no hero carousel, no feature
+grid, no pricing table, no FAQ accordion. Supporting copy is three one-line
+points under the dropzone, and all of it disappears the moment a file is loaded
+so the workspace is uncluttered. When adding anything to the home screen, the
+bar is: *does this help someone get their chart faster?*
 
 ## What's inside
 
 | Path | What it is |
 |---|---|
-| `vizdrop/index.html` | Landing / sales page (hero, features, pricing, FAQ) |
-| `vizdrop/app.html` | The app itself |
+| `vizdrop/index.html` | **The whole product** — one page. Before a file is loaded it shows the dropzone (plus three one-line trust points and the support button); after a file is loaded the same page becomes the dashboard workspace. |
+| `vizdrop/app.html` | Redirect stub so old `/app.html` links keep working |
 | `vizdrop/assets/js/parse.js` | File readers: xlsx/xls (SheetJS), csv/tsv (PapaParse), JSON. Header detection, banner-row skipping, empty-column cleanup |
 | `vizdrop/assets/js/profile.js` | Column type detection — handles `Rp 1.234.567`, `$1,234.56`, `1.234,56`, `(500)`, `12%`, dd/mm/yyyy vs mm/dd/yyyy, Excel serial dates |
 | `vizdrop/assets/js/auto.js` | Auto-dashboard heuristics (which KPIs, which charts) + aggregation |

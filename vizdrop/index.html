@@ -3,249 +3,131 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>VizDrop — drop a spreadsheet, get a beautiful dashboard</title>
-  <meta name="description" content="Turn Excel, CSV, and JSON files into presentation-ready dashboards in seconds. Free to use — your data never leaves your browser.">
+  <title>VizDrop — turn your spreadsheet into a dashboard</title>
+  <meta name="description" content="Drop an Excel, CSV, or JSON file and get a beautiful, presentation-ready dashboard in seconds. Free, no sign-up, and your data never leaves your browser.">
   <meta name="theme-color" content="#f9f9f7">
   <meta property="og:type" content="website">
-  <meta property="og:title" content="VizDrop — drop a spreadsheet, get a dashboard">
-  <meta property="og:description" content="Turn Excel, CSV, and JSON files into presentation-ready dashboards in seconds. Free — your data never leaves your browser.">
+  <meta property="og:title" content="VizDrop — turn your spreadsheet into a dashboard">
+  <meta property="og:description" content="Drop an Excel, CSV, or JSON file and get a presentation-ready dashboard in seconds. Free, no sign-up.">
   <meta property="og:url" content="https://vizdrop.netlify.app/">
   <meta property="og:image" content="https://vizdrop.netlify.app/assets/og-image.png">
   <meta name="twitter:card" content="summary_large_image">
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Crect x='1' y='8' width='3.4' height='7' rx='1' fill='%232a78d6'/%3E%3Crect x='6.3' y='4' width='3.4' height='11' rx='1' fill='%23eb6834'/%3E%3Crect x='11.6' y='1' width='3.4' height='14' rx='1' fill='%231baf7a'/%3E%3C/svg%3E">
   <link rel="stylesheet" href="assets/css/tokens.css">
-  <link rel="stylesheet" href="assets/css/landing.css">
+  <link rel="stylesheet" href="assets/css/app.css">
   <script>
+    // set theme before first paint to avoid a flash
     (function () {
       var t = localStorage.getItem('vizdrop.theme');
       if (!t) t = matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
       document.documentElement.dataset.theme = t;
     })();
   </script>
+  <script defer src="assets/vendor/xlsx.full.min.js"></script>
+  <script defer src="assets/vendor/papaparse.min.js"></script>
 </head>
 <body>
 
-<nav class="nav">
-  <a class="brand" href="index.html" style="display:flex;align-items:center;gap:8px;font-weight:700;font-size:16.5px;color:var(--ink);text-decoration:none;">
-    <svg width="20" height="20" viewBox="0 0 16 16"><rect x="1" y="8" width="3.4" height="7" rx="1" fill="#2a78d6"/><rect x="6.3" y="4" width="3.4" height="11" rx="1" fill="#eb6834"/><rect x="11.6" y="1" width="3.4" height="14" rx="1" fill="#1baf7a"/></svg>
+<header class="topbar">
+  <a class="brand" href="./" aria-label="VizDrop home">
+    <svg width="20" height="20" viewBox="0 0 16 16" aria-hidden="true"><rect x="1" y="8" width="3.4" height="7" rx="1" fill="#2a78d6"/><rect x="6.3" y="4" width="3.4" height="11" rx="1" fill="#eb6834"/><rect x="11.6" y="1" width="3.4" height="14" rx="1" fill="#1baf7a"/></svg>
     VizDrop
   </a>
-  <div class="links">
-    <a href="#how">How it works</a>
-    <a href="#support">Free forever</a>
-    <a href="#faq">FAQ</a>
-    <a class="btn btn-primary" href="app.html">Open the app</a>
-  </div>
-</nav>
 
-<header class="hero wrap">
-  <h1>Drop your spreadsheet.<br>Get a dashboard.</h1>
-  <p class="sub">VizDrop turns messy Excel, CSV, and JSON files into clean, presentation-ready dashboards in seconds — no formulas, no chart wizards, nothing to learn.</p>
-  <div class="cta-row">
-    <a class="btn btn-primary" href="app.html">Try it free →</a>
-    <a class="btn" href="app.html?demo=1">See a live demo</a>
+  <div class="file-chip" id="file-chip" hidden>
+    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5"/></svg>
+    <span id="file-chip-name"></span>
   </div>
-  <p class="no-signup">No sign-up · No install · Your data never leaves your browser</p>
 
-  <div class="hero-visual" aria-hidden="true">
-    <svg viewBox="0 0 860 430" xmlns="http://www.w3.org/2000/svg" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif">
-      <rect width="860" height="430" rx="18" fill="var(--page)"/>
-      <!-- KPI tiles -->
-      <g>
-        <rect x="24" y="24" width="258" height="76" rx="12" fill="var(--surface)" stroke="var(--border)"/>
-        <text x="44" y="52" font-size="11.5" fill="var(--muted)">Total Revenue</text>
-        <text x="44" y="82" font-size="24" font-weight="600" fill="var(--ink)">$128.4K</text>
-        <rect x="301" y="24" width="258" height="76" rx="12" fill="var(--surface)" stroke="var(--border)"/>
-        <text x="321" y="52" font-size="11.5" fill="var(--muted)">Units Sold</text>
-        <text x="321" y="82" font-size="24" font-weight="600" fill="var(--ink)">31.9K</text>
-        <rect x="578" y="24" width="258" height="76" rx="12" fill="var(--surface)" stroke="var(--border)"/>
-        <text x="598" y="52" font-size="11.5" fill="var(--muted)">Records</text>
-        <text x="598" y="82" font-size="24" font-weight="600" fill="var(--ink)">520</text>
-      </g>
-      <!-- line chart card -->
-      <g>
-        <rect x="24" y="116" width="405" height="290" rx="12" fill="var(--surface)" stroke="var(--border)"/>
-        <text x="44" y="146" font-size="13.5" font-weight="600" fill="var(--ink)">Revenue over time</text>
-        <g stroke="var(--grid)" stroke-width="1">
-          <line x1="44" y1="238" x2="409" y2="238"/>
-          <line x1="44" y1="296" x2="409" y2="296"/>
-          <line x1="44" y1="180" x2="409" y2="180"/>
-        </g>
-        <line x1="44" y1="354" x2="409" y2="354" stroke="var(--axis)" stroke-width="1"/>
-        <path d="M44,340 L88,326 L132,330 L176,300 L220,306 L264,270 L308,258 L352,232 L392,196" fill="none" stroke="#2a78d6" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
-        <path d="M44,340 L88,326 L132,330 L176,300 L220,306 L264,270 L308,258 L352,232 L392,196 L392,354 L44,354 Z" fill="#2a78d6" opacity="0.09"/>
-        <circle cx="392" cy="196" r="5" fill="#2a78d6" stroke="var(--surface)" stroke-width="2"/>
-        <text x="360" y="184" font-size="11.5" font-weight="600" fill="var(--ink)">$31.2K</text>
-        <text x="44" y="374" font-size="10" fill="var(--muted)">Feb</text>
-        <text x="210" y="374" font-size="10" fill="var(--muted)">Apr</text>
-        <text x="380" y="374" font-size="10" fill="var(--muted)">Jul</text>
-      </g>
-      <!-- bar chart card -->
-      <g>
-        <rect x="447" y="116" width="389" height="138" rx="12" fill="var(--surface)" stroke="var(--border)"/>
-        <text x="467" y="146" font-size="13.5" font-weight="600" fill="var(--ink)">Revenue by City</text>
-        <text x="467" y="176" font-size="10.5" fill="var(--ink2)">Jakarta</text>
-        <path d="M530,166 h236 q4,0 4,4 v6 q0,4 -4,4 h-236 Z" fill="#2a78d6"/>
-        <text x="780" y="176" font-size="10.5" font-weight="600" fill="var(--ink)">$42K</text>
-        <text x="467" y="200" font-size="10.5" fill="var(--ink2)">Surabaya</text>
-        <path d="M530,190 h182 q4,0 4,4 v6 q0,4 -4,4 h-182 Z" fill="#2a78d6"/>
-        <text x="726" y="200" font-size="10.5" font-weight="600" fill="var(--ink)">$33K</text>
-        <text x="467" y="224" font-size="10.5" fill="var(--ink2)">Bandung</text>
-        <path d="M530,214 h132 q4,0 4,4 v6 q0,4 -4,4 h-132 Z" fill="#2a78d6"/>
-        <text x="676" y="224" font-size="10.5" font-weight="600" fill="var(--ink)">$26K</text>
-      </g>
-      <!-- donut card -->
-      <g>
-        <rect x="447" y="268" width="389" height="138" rx="12" fill="var(--surface)" stroke="var(--border)"/>
-        <text x="467" y="298" font-size="13.5" font-weight="600" fill="var(--ink)">Share by Category</text>
-        <g transform="translate(516,352)">
-          <circle r="34" fill="none" stroke="#2a78d6" stroke-width="16" stroke-dasharray="118 96" transform="rotate(-90)"/>
-          <circle r="34" fill="none" stroke="#eb6834" stroke-width="16" stroke-dasharray="54 160" stroke-dashoffset="-118" transform="rotate(-90)"/>
-          <circle r="34" fill="none" stroke="#1baf7a" stroke-width="16" stroke-dasharray="38 176" stroke-dashoffset="-172" transform="rotate(-90)"/>
-          <circle r="34" fill="none" stroke="#eda100" stroke-width="16" stroke-dasharray="18 196" stroke-dashoffset="-210" transform="rotate(-90)"/>
-        </g>
-        <g font-size="10.5">
-          <rect x="596" y="316" width="9" height="9" rx="2" fill="#2a78d6"/><text x="611" y="324" fill="var(--ink2)">Coffee</text><text x="810" y="324" text-anchor="end" font-weight="600" fill="var(--ink)">55%</text>
-          <rect x="596" y="338" width="9" height="9" rx="2" fill="#eb6834"/><text x="611" y="346" fill="var(--ink2)">Pastry</text><text x="810" y="346" text-anchor="end" font-weight="600" fill="var(--ink)">24%</text>
-          <rect x="596" y="360" width="9" height="9" rx="2" fill="#1baf7a"/><text x="611" y="368" fill="var(--ink2)">Tea</text><text x="810" y="368" text-anchor="end" font-weight="600" fill="var(--ink)">16%</text>
-          <rect x="596" y="382" width="9" height="9" rx="2" fill="#eda100"/><text x="611" y="390" fill="var(--ink2)">Merch</text><text x="810" y="390" text-anchor="end" font-weight="600" fill="var(--ink)">5%</text>
-        </g>
-      </g>
-    </svg>
+  <select id="sheet-select" hidden aria-label="Choose sheet"></select>
+
+  <div class="export-wrap" id="export-wrap" hidden>
+    <button class="btn btn-primary" id="export-btn">
+      <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 2v8m0 0L5 7m3 3 3-3M3 13h10"/></svg>
+      Export
+    </button>
+    <div class="export-menu" id="export-menu" hidden>
+      <button id="exp-dash">Dashboard image (PNG)</button>
+      <button id="exp-charts">Each chart as PNG</button>
+      <button id="exp-pptx">PowerPoint (.pptx)</button>
+    </div>
   </div>
+
+  <button class="btn" id="new-btn" hidden>New file</button>
+  <a class="btn btn-ghost" id="donate-btn" href="#" target="_blank" rel="noopener" hidden title="Help keep VizDrop free">♥<span class="btn-label"> Support</span></a>
+  <button id="theme-btn" title="Switch light / dark" aria-label="Switch color theme">☾</button>
 </header>
 
-<section class="block wrap" id="how">
-  <h2>From file to “wow” in three steps</h2>
-  <p class="block-sub">Built for people who have better things to do than fight with chart settings.</p>
-  <div class="steps">
-    <div class="card step">
-      <span class="n">1</span>
-      <h3>Drop your file</h3>
-      <p>Excel, CSV, TSV, or JSON — even messy exports with title rows, currency symbols, and mixed date formats.</p>
-    </div>
-    <div class="card step">
-      <span class="n">2</span>
-      <h3>Get an instant dashboard</h3>
-      <p>VizDrop reads your columns, finds totals, trends, and breakdowns, and picks the right chart for each — automatically.</p>
-    </div>
-    <div class="card step">
-      <span class="n">3</span>
-      <h3>Export &amp; present</h3>
-      <p>Download sharp PNG images or a ready-made PowerPoint deck. Tweak titles, colors, and chart types anytime.</p>
-    </div>
-  </div>
-</section>
+<main>
+  <!-- ============ before a file is loaded: the tool itself ============ -->
+  <section id="drop-screen">
+    <h1>Turn your spreadsheet into a dashboard.</h1>
 
-<section class="block wrap">
-  <h2>Why people like it</h2>
-  <p class="block-sub">Serious about design, obsessive about simplicity.</p>
-  <div class="features">
-    <div class="card feature">
-      <div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><rect x="4" y="10" width="16" height="10" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg></div>
-      <h3>Private by design</h3>
-      <p>Files are processed 100% in your browser. Nothing is uploaded, stored, or seen by anyone — including us.</p>
+    <div class="dropzone" id="dropzone" role="button" tabindex="0" aria-label="Upload a data file">
+      <div class="dz-icon" aria-hidden="true">
+        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 16V4m0 0L7 9m5-5 5 5"/><path d="M4 16v3a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-3"/></svg>
+      </div>
+      <strong>Drop your file here</strong>
+      <span class="browse">or click to browse</span>
+      <span class="formats">Excel · CSV · TSV · JSON</span>
     </div>
-    <div class="card feature">
-      <div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 3 14h7l-1 8 10-12h-7l1-8z"/></svg></div>
-      <h3>Handles messy files</h3>
-      <p>Currency symbols, “Rp 1.234.567”, mixed date formats, title rows, blank columns — VizDrop sorts it out.</p>
-    </div>
-    <div class="card feature">
-      <div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M12 3v12m0 0-4-4m4 4 4-4M4 21h16"/></svg></div>
-      <h3>Presentation-ready exports</h3>
-      <p>Crisp PNGs for reports and chats, or a full PowerPoint deck with one chart per slide. Ready to send.</p>
-    </div>
-    <div class="card feature">
-      <div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><rect x="3" y="12" width="4" height="8" rx="1"/><rect x="10" y="7" width="4" height="13" rx="1"/><rect x="17" y="3" width="4" height="17" rx="1"/></svg></div>
-      <h3>Smart chart picking</h3>
-      <p>Trends become lines, rankings become bars, shares become donuts. The right chart, chosen for you.</p>
-    </div>
-    <div class="card feature">
-      <div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg></div>
-      <h3>Everything is editable</h3>
-      <p>Rename titles, switch chart types, change colors, swap fields — with simple menus, not settings panels.</p>
-    </div>
-    <div class="card feature">
-      <div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg></div>
-      <h3>Nothing to install</h3>
-      <p>Works in any modern browser, on any computer. Open the page, drop a file, done.</p>
-    </div>
-  </div>
-</section>
 
-<section class="block wrap" id="support">
-  <h2>Free. Forever.</h2>
-  <p class="block-sub">Every feature, for everyone — no account, no limits, no catch.</p>
-  <div class="pricing">
-    <div class="card plan">
-      <h3>Everything included</h3>
-      <div class="price">$0<small> forever</small></div>
-      <ul>
-        <li>All chart types &amp; smart dashboards</li>
-        <li>Unlimited rows</li>
-        <li>Excel, CSV, TSV &amp; JSON files</li>
-        <li>Sharp PNG &amp; PowerPoint (.pptx) exports</li>
-        <li>Your data never leaves your browser</li>
-      </ul>
-      <a class="btn btn-primary" href="app.html">Open VizDrop →</a>
+    <div class="sample-row">
+      <button class="btn" id="sample-btn">✨ Try it with sample data</button>
     </div>
-    <div class="card plan">
-      <h3>♥ Keep VizDrop free</h3>
-      <p style="color: var(--ink2); font-size: 14.5px; margin: 14px 0 18px;">
-        VizDrop is built and run by one person. If it saved you time, you can
-        help keep it free for everyone — chip in whatever feels right via
-        Trakteer (QRIS, GoPay, OVO, bank transfer). No pressure, no paywall, ever.
-      </p>
+
+    <ul class="trust-row">
+      <li>
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="4" y="10" width="16" height="10" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg>
+        Never uploaded — runs in your browser
+      </li>
+      <li>
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M12 3v12m0 0-4-4m4 4 4-4M4 21h16"/></svg>
+        Export to PNG &amp; PowerPoint
+      </li>
+      <li>
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M13 2 3 14h7l-1 8 10-12h-7l1-8z"/></svg>
+        Free, no sign-up
+      </li>
+    </ul>
+
+    <div class="home-support">
+      <span>VizDrop is free forever. If it saves you time, you can help keep it that way.</span>
       <div class="trakteer-slot">
         <script type="text/javascript" src="https://edge-cdn.trakteer.id/js/trbtn-overlay.min.js?v=14-05-2025"></script>
         <script type="text/javascript" class="troverlay">(function () { var trbtnId = trbtnOverlay.init('Dukung Saya di Trakteer', '#be1e2d', 'https://trakteer.id/v1/smithsshn/tip/embed/modal', 'https://edge-cdn.trakteer.id/images/embed/trbtn-icon.png?v=14-05-2025', '40', 'inline'); trbtnOverlay.draw(trbtnId); })();</script>
         <noscript><a class="btn" href="https://trakteer.id/smithsshn/tip" target="_blank" rel="noopener">Dukung Saya di Trakteer</a></noscript>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<section class="block wrap" id="faq">
-  <h2>Questions, answered</h2>
-  <div class="faq" style="margin-top: 28px;">
-    <details>
-      <summary>Is my data uploaded anywhere?</summary>
-      <p>No. VizDrop runs entirely in your browser — your file is read on your own device and never sent to a server. Close the tab and it’s gone.</p>
-    </details>
-    <details>
-      <summary>What files can I use?</summary>
-      <p>Excel (.xlsx, .xls), CSV, TSV, and JSON. Multi-sheet workbooks are supported — you can switch between sheets. Messy files with title rows, currency symbols, and mixed date formats are handled automatically.</p>
-    </details>
-    <details>
-      <summary>Do I need to know anything about charts?</summary>
-      <p>No. Drop a file and VizDrop builds the dashboard for you. If you want to tweak, every chart has a simple edit menu — change the type, fields, or colors with two clicks.</p>
-    </details>
-    <details>
-      <summary>Is VizDrop really free?</summary>
-      <p>Yes — free forever, with every feature included and no account needed. It’s kept alive by donations: if VizDrop saved you time, you can chip in whatever feels right, but you never have to.</p>
-    </details>
-  </div>
-</section>
+  <!-- ============ after a file is loaded: pure workspace ============ -->
+  <section id="dash-screen" hidden>
+    <div class="dash-meta">
+      <h1 id="dash-title" spellcheck="false">My dashboard</h1>
+      <div id="dash-subtitle"></div>
+    </div>
 
-<section class="final-cta wrap">
-  <h2>Your next report could be ready<br>before your coffee is.</h2>
-  <a class="btn btn-primary" href="app.html" style="padding: 12px 26px; font-size: 16px;">Try VizDrop free →</a>
-</section>
+    <div class="kpis" id="kpis"></div>
+    <div class="charts-grid" id="charts"></div>
 
-<footer>
-  © 2026 VizDrop · <a href="app.html">Open the app</a> · Your data stays in your browser
-  · <a data-donate hidden href="#" target="_blank" rel="noopener">Help keep VizDrop free ♥</a>
-</footer>
+    <details class="card preview-card" id="preview-card">
+      <summary id="preview-title">Data preview</summary>
+      <div id="preview-body"></div>
+    </details>
 
-<script type="module">
-  import { DONATE_URL, donateConfigured } from './assets/js/config.js';
-  if (donateConfigured()) {
-    for (const el of document.querySelectorAll('[data-donate]')) {
-      el.href = DONATE_URL;
-      el.hidden = false;
-    }
-  }
-</script>
+    <p class="foot-note">Made with <a href="./">VizDrop</a> · Your data stays in your browser.<span hidden> · <a id="foot-donate" href="#" target="_blank" rel="noopener">Help keep VizDrop free ♥</a></span></p>
+  </section>
+</main>
+
+<div class="busy" id="busy" hidden>
+  <div class="spinner"></div>
+  <div id="busy-text">Reading your file…</div>
+</div>
+
+<div class="toast" id="toast"></div>
+<input type="file" id="file-input" hidden accept=".xlsx,.xls,.xlsm,.xlsb,.ods,.csv,.tsv,.txt,.json">
+
+<script type="module" src="assets/js/app.js"></script>
 </body>
 </html>
