@@ -83,6 +83,10 @@ section.block { padding: 64px 0 8px; }
 .plan li::before { content: "✓"; position: absolute; left: 2px; color: var(--good); font-weight: 700; }
 .plan .btn { width: 100%; justify-content: center; }
 
+/* Trakteer renders its own button here; keep it aligned with our buttons */
+.trakteer-slot { display: flex; align-items: center; min-height: 44px; }
+.trakteer-slot img { max-width: 100%; height: auto; }
+
 .faq { max-width: 640px; margin: 0 auto; }
 .faq details { border-bottom: 1px solid var(--grid); padding: 4px 0; }
 .faq summary {
